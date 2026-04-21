@@ -1,0 +1,1537 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+  <title>Pricing Plans - Compass Housing Society</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <style>
+    :root {
+      --primary: #01321F;
+      --accent: #0088BE;
+      --light-bg: #D1F2FF;
+      --light: #FFFFFF;
+      --dark: #0A1A2A;
+      --dark-bg: #0B1B2B;
+      --soft-accent: rgba(0,136,190,0.12);
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: 'DM Sans', sans-serif;
+      color: var(--dark);
+      background-color: var(--light);
+      transition: background-color 0.3s, color 0.3s;
+    }
+
+    h1 { font-size: 46px; line-height: 1.2; font-weight: 800; letter-spacing: -0.02em; }
+    h2 { font-size: 36px; line-height: 1.3; font-weight: 700; letter-spacing: -0.01em; }
+    h3 { font-size: 24px; line-height: 1.4; font-weight: 600; }
+    h4, h5, h6 { font-size: 20px; line-height: 1.4; font-weight: 600; }
+    li, span, p { font-size: 18px; line-height: 1.6; font-weight: 400; }
+    a { text-decoration: none; color: inherit; }
+    ul { list-style: none; padding-left: 0; margin-bottom: 0; }
+
+    body::after {
+      content: "";
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background-image: url("Images/transparent-logo.jpeg");
+      background-repeat: no-repeat;
+      background-position: center;
+      background-size: 570px auto;
+      opacity: 0.08;
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    .page-wrapper {
+      max-width: 1920px;
+      margin: 0 auto;
+      min-height: 100vh;
+      position: relative;
+      overflow-x: hidden;
+      padding-top: 82px;
+      background-color: var(--light);
+      transition: background-color 0.3s;
+    }
+
+    .content-layer { 
+      position: relative; 
+      z-index: 1;
+      min-height: calc(100vh - 200px);
+    }
+
+    header {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      z-index: 100;
+      background: #01321F;
+      box-shadow: 0 8px 22px rgba(0,0,0,0.55);
+      transition: background 0.3s;
+    }
+
+    .navbar-custom { 
+      display: flex; 
+      align-items: center; 
+      justify-content: space-between; 
+      gap: 24px; 
+      position: relative;
+      padding: 12px 40px;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-weight: 800;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      white-space: nowrap;
+      color: #FFFFFF;
+    }
+
+    .brand img { 
+      width: 58px; 
+      height: 58px; 
+      object-fit: cover; 
+      border-radius: 8px;
+      border: 2px solid #FFFFFF; 
+      opacity: 0.97; 
+      background: transparent; 
+    }
+
+    .nav-menu { 
+      display: flex; 
+      align-items: center; 
+      gap: 24px; 
+      flex: 1; 
+      justify-content: center; 
+      flex-wrap: wrap; 
+    }
+
+    .nav-item { position: relative; }
+    .nav-link-custom {
+      color: #FFFFFF;
+      padding: 4px 0;
+      opacity: 0.95;
+      position: relative;
+      cursor: pointer;
+      display: inline-block;
+      transition: color 0.25s ease, opacity 0.25s ease;
+      font-weight: 500;
+      font-size: 18px;
+    }
+
+    .nav-link-custom::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      bottom: -3px;
+      width: 0%;
+      height: 2px;
+      background-color: #0088BE;
+      transition: width 0.25s ease;
+    }
+
+    .nav-link-custom:hover::after { width: 100%; }
+    .dropdown-toggle-custom::after { content: " ▾"; position: static; width: auto; height: auto; background: none; margin-left: 4px; }
+
+    .dropdown-menu-custom {
+      position: absolute;
+      left: 0;
+      top: calc(100% + 6px);
+      background-color: #01321F;
+      border-radius: 10px;
+      border: 1px solid rgba(255,255,255,0.12);
+      min-width: 190px;
+      display: none;
+      padding: 6px 0;
+      z-index: 120;
+      box-shadow: 0 12px 20px rgba(0,0,0,0.6);
+    }
+
+    .dropdown-menu-custom li a {
+      display: block;
+      padding: 8px 18px;
+      color: #FFFFFF;
+      white-space: nowrap;
+      opacity: 0.9;
+      transition: background-color 0.25s ease, opacity 0.25s ease, color 0.25s ease;
+      font-weight: 500;
+      font-size: 18px;
+    }
+
+    .dropdown-menu-custom li a:hover { background-color: rgba(0,136,190,0.25); opacity: 1; color: #D1F2FF; }
+    .nav-item.dropdown.open>.dropdown-menu-custom { display: block; }
+
+    .nav-actions { 
+      display: flex; 
+      align-items: center; 
+      gap: 12px; 
+      margin-left: auto; 
+    }
+
+    .btn-animated { 
+      transition: transform 0.25s ease, box-shadow 0.25s ease, filter 0.25s ease; 
+      box-shadow: 0 6px 16px rgba(0,0,0,0.45); 
+    }
+
+    .btn-animated:hover { 
+      transform: translateY(-2px); 
+      box-shadow: 0 10px 26px rgba(0,0,0,0.7); 
+      filter: brightness(0.96); 
+    }
+
+    .btn-register {
+      background: #0088BE;
+      color: #FFFFFF;
+      border: none;
+      padding: 8px 15px;
+      border-radius: 999px;
+      font-weight: 600;
+      cursor: pointer;
+      white-space: nowrap;
+      font-family: 'DM Sans', sans-serif;
+      font-size: 16px;
+    }
+
+    /* FIXED THEME TOGGLE - SMOOTH MOVEMENT FOR ALL DEVICES */
+    .theme-toggle {
+      position: relative;
+      width: 70px;
+      height: 34px;
+      border-radius: 34px;
+      background: linear-gradient(145deg, #4a4a4a, #2a2a2a);
+      border: 2px solid rgba(255,255,255,0.3);
+      cursor: pointer;
+      transition: all 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+      box-shadow: inset 0 2px 4px rgba(0,0,0,0.3), 0 4px 12px rgba(0,0,0,0.25);
+      overflow: hidden;
+      flex-shrink: 0;
+    }
+
+    /* Toggle circle (moving part) */
+    .theme-toggle::before {
+      content: '';
+      position: absolute;
+      top: 3px;
+      left: 3px;
+      width: 26px;
+      height: 26px;
+      background: linear-gradient(145deg, #FFD700, #FFA500);
+      border-radius: 50%;
+      transition: all 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+      z-index: 2;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.3), inset 0 -1px 2px rgba(255,255,255,0.2);
+    }
+
+    /* Sun icon for light mode (right side) */
+    .theme-toggle::after {
+      content: '☀️';
+      position: absolute;
+      top: 50%;
+      right: 10px;
+      transform: translateY(-50%);
+      font-size: 14px;
+      opacity: 0.9;
+      filter: drop-shadow(0 1px 2px rgba(0,0,0,0.3));
+      transition: all 0.4s ease;
+      z-index: 1;
+    }
+
+    /* Moon icon element (hidden initially) */
+    .theme-toggle .moon {
+      position: absolute;
+      top: 50%;
+      left: 10px;
+      transform: translateY(-50%);
+      font-size: 14px;
+      opacity: 0.4;
+      filter: drop-shadow(0 1px 2px rgba(0,0,0,0.3));
+      transition: all 0.4s ease;
+      pointer-events: none;
+    }
+
+    /* DARK MODE STYLES FOR TOGGLE */
+    body.dark-mode .theme-toggle {
+      background: linear-gradient(145deg, #1e3a5f, #0a1a2a);
+      border-color: rgba(255,255,255,0.5);
+    }
+
+    /* In dark mode, the toggle circle moves to the RIGHT */
+    body.dark-mode .theme-toggle::before {
+      left: calc(100% - 29px);
+      background: linear-gradient(145deg, #E0E0E0, #C0C0C0);
+    }
+
+    /* In dark mode, hide sun and show moon via pseudo-element */
+    body.dark-mode .theme-toggle::after {
+      content: '🌙';
+      right: auto;
+      left: 10px;
+      opacity: 1;
+    }
+
+    /* Hide the moon span in dark mode since we use pseudo-element */
+    body.dark-mode .theme-toggle .moon {
+      opacity: 0;
+    }
+
+    .menu-toggle {
+      display: none;
+      border: 1px solid #FFFFFF;
+      background: transparent;
+      font-size: 22px;
+      line-height: 1;
+      cursor: pointer;
+      color: #FFFFFF;
+      padding: 4px 10px;
+      border-radius: 4px;
+      z-index: 1001;
+      transition: background 0.2s;
+    }
+    
+    .menu-toggle:hover {
+      background: rgba(255,255,255,0.1);
+    }
+
+    .mobile-actions {
+      display: none;
+      align-items: center;
+      gap: 12px;
+      margin-left: auto;
+    }
+
+    /* Pricing Page Specific Styles */
+    .pricing-hero {
+      background: linear-gradient(135deg, #01321F 0%, #0A3A28 100%);
+      padding: 80px 20px 60px;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+      margin-bottom: 60px;
+    }
+
+    .pricing-hero::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: radial-gradient(circle at 30% 20%, rgba(0,136,190,0.25) 0%, rgba(1,50,31,0.5) 100%);
+      z-index: 1;
+    }
+
+    .pricing-hero-content {
+      max-width: 800px;
+      margin: 0 auto;
+      position: relative;
+      z-index: 2;
+    }
+
+    .pricing-hero h1 {
+      color: white;
+      margin-bottom: 20px;
+      text-shadow: 3px 3px 12px rgba(0,0,0,0.5);
+    }
+
+    .pricing-hero p {
+      color: rgba(255,255,255,0.9);
+      font-size: 20px;
+    }
+
+    .pricing-section {
+      padding: 0 20px 80px;
+    }
+
+    .pricing-container {
+      max-width: 1300px;
+      margin: 0 auto;
+    }
+
+    .pricing-toggle {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 20px;
+      margin-bottom: 60px;
+    }
+
+    .toggle-label {
+      font-size: 18px;
+      font-weight: 600;
+      color: #2C4C3E;
+    }
+
+    .toggle-switch {
+      position: relative;
+      display: inline-block;
+      width: 80px;
+      height: 40px;
+    }
+
+    .toggle-switch input {
+      opacity: 0;
+      width: 0;
+      height: 0;
+    }
+
+    .toggle-slider {
+      position: absolute;
+      cursor: pointer;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background-color: #01321F;
+      transition: 0.4s;
+      border-radius: 40px;
+    }
+
+    .toggle-slider:before {
+      position: absolute;
+      content: "";
+      height: 32px;
+      width: 32px;
+      left: 4px;
+      bottom: 4px;
+      background-color: white;
+      transition: 0.4s;
+      border-radius: 50%;
+    }
+
+    input:checked + .toggle-slider {
+      background-color: #0088BE;
+    }
+
+    input:checked + .toggle-slider:before {
+      transform: translateX(40px);
+    }
+
+    .save-badge {
+      background: #0088BE;
+      color: white;
+      padding: 5px 12px;
+      border-radius: 20px;
+      font-size: 12px;
+      font-weight: 600;
+      margin-left: 10px;
+    }
+
+    .pricing-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+      gap: 30px;
+      margin-bottom: 60px;
+    }
+
+    .pricing-card {
+      background: white;
+      border-radius: 24px;
+      overflow: hidden;
+      transition: all 0.4s ease;
+      position: relative;
+      box-shadow: 0 15px 40px rgba(0,50,31,0.08);
+    }
+
+    .pricing-card:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 25px 60px rgba(0,136,190,0.15);
+    }
+
+    .pricing-card.popular {
+      border: 2px solid #0088BE;
+      transform: scale(1.02);
+    }
+
+    .pricing-card.popular:hover {
+      transform: scale(1.03) translateY(-10px);
+    }
+
+    .popular-badge {
+      position: absolute;
+      top: 20px;
+      right: 20px;
+      background: #0088BE;
+      color: white;
+      padding: 6px 16px;
+      border-radius: 30px;
+      font-size: 14px;
+      font-weight: 600;
+      z-index: 2;
+    }
+
+    .pricing-header {
+      padding: 40px 30px 20px;
+      text-align: center;
+      background: linear-gradient(135deg, #F7FDFF 0%, #FFFFFF 100%);
+    }
+
+    .pricing-card.popular .pricing-header {
+      background: linear-gradient(135deg, #D1F2FF 0%, #FFFFFF 100%);
+    }
+
+    .plan-name {
+      font-size: 28px;
+      font-weight: 700;
+      color: #01321F;
+      margin-bottom: 15px;
+    }
+
+    .plan-price {
+      margin-bottom: 20px;
+    }
+
+    .price-amount {
+      font-size: 48px;
+      font-weight: 800;
+      color: #01321F;
+    }
+
+    .price-period {
+      font-size: 18px;
+      color: #2C4C3E;
+      font-weight: 500;
+    }
+
+    .plan-description {
+      color: #2C4C3E;
+      font-size: 16px;
+      line-height: 1.5;
+    }
+
+    .pricing-features {
+      padding: 30px;
+    }
+
+    .feature-list {
+      list-style: none;
+      margin-bottom: 30px;
+    }
+
+    .feature-list li {
+      padding: 12px 0;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      border-bottom: 1px solid #D1F2FF;
+      font-size: 16px;
+    }
+
+    .feature-list li i {
+      color: #0088BE;
+      font-size: 18px;
+      width: 24px;
+    }
+
+    .feature-list li.disabled {
+      color: #999;
+    }
+
+    .feature-list li.disabled i {
+      color: #ccc;
+    }
+
+    .pricing-footer {
+      padding: 0 30px 40px;
+      text-align: center;
+    }
+
+    .btn-pricing {
+      width: 100%;
+      background: #01321F;
+      color: white;
+      border: none;
+      padding: 14px;
+      border-radius: 999px;
+      font-weight: 600;
+      font-size: 16px;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      font-family: 'DM Sans', sans-serif;
+    }
+
+    .btn-pricing:hover {
+      background: #0088BE;
+      transform: translateY(-2px);
+      box-shadow: 0 10px 26px rgba(0,136,190,0.3);
+    }
+
+    .btn-pricing-outline {
+      background: transparent;
+      border: 2px solid #01321F;
+      color: #01321F;
+    }
+
+    .btn-pricing-outline:hover {
+      background: #01321F;
+      color: white;
+    }
+
+    /* FAQ Section */
+    .faq-section {
+      padding: 60px 20px;
+      background: #F7FDFF;
+    }
+
+    .faq-container {
+      max-width: 800px;
+      margin: 0 auto;
+    }
+
+    .faq-item {
+      background: white;
+      border-radius: 16px;
+      margin-bottom: 20px;
+      overflow: hidden;
+      box-shadow: 0 5px 20px rgba(0,0,0,0.05);
+    }
+
+    .faq-question {
+      padding: 20px 25px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      cursor: pointer;
+      font-weight: 600;
+      color: #01321F;
+      transition: all 0.3s ease;
+    }
+
+    .faq-question:hover {
+      background: #D1F2FF;
+    }
+
+    .faq-question i {
+      transition: transform 0.3s ease;
+      color: #0088BE;
+    }
+
+    .faq-answer {
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.3s ease;
+      padding: 0 25px;
+      color: #2C4C3E;
+      line-height: 1.6;
+    }
+
+    .faq-item.active .faq-answer {
+      max-height: 300px;
+      padding: 0 25px 20px;
+    }
+
+    .faq-item.active .faq-question i {
+      transform: rotate(180deg);
+    }
+
+    /* Footer Styles */
+    .site-footer {
+      background: #01321F;
+      color: #FFFFFF;
+      font-size: 14px;
+      width: 100%;
+      transition: background 0.3s;
+      padding: 30px 0 20px;
+      min-height: 180px;
+      position: relative;
+      margin-top: 0;
+    }
+
+    .footer-content {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 20px;
+      gap: 30px;
+    }
+
+    .footer-column { margin-bottom: 15px; }
+    .footer-brand { display: flex; flex-direction: column; align-items: flex-start; gap: 15px; }
+    .footer-brand-text h3 { font-size: 24px; font-weight: 700; margin-bottom: 12px; color: white; }
+    .footer-brand-text p { font-size: 15px; opacity: 0.9; max-width: 350px; margin-bottom: 20px; line-height: 1.6; color: #D1F2FF; }
+
+    .footer-social-icons { display: flex; gap: 12px; margin-top: 10px; }
+    
+    .footer-social-icon {
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      background: rgba(209,242,255,0.12);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: white;
+      font-size: 18px;
+      transition: all 0.3s ease;
+      border: 1px solid rgba(209,242,255,0.2);
+    }
+    
+    .footer-social-icon:hover {
+      background: #0088BE;
+      color: white;
+      transform: translateY(-3px);
+      border-color: #0088BE;
+    }
+
+    .footer-column h4 {
+      font-size: 20px;
+      font-weight: 700;
+      margin-bottom: 20px;
+      color: white;
+      position: relative;
+      padding-bottom: 8px;
+    }
+    
+    .footer-links {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+    
+    .footer-links li {
+      margin-bottom: 12px;
+    }
+    
+    .footer-links li a {
+      color: rgba(255,255,255,0.9);
+      text-decoration: none;
+      transition: all 0.3s ease;
+      display: inline-block;
+      font-size: 15px;
+      font-weight: 500;
+    }
+    
+    .footer-links li a:hover {
+      color: #D1F2FF;
+      transform: translateX(5px);
+    }
+    
+    .footer-links li i {
+      margin-right: 8px;
+      color: #0088BE;
+      width: 16px;
+      text-align: center;
+    }
+
+    .house-image-wrapper {
+      width: 100%;
+      height: 160px;
+      border-radius: 12px;
+      overflow: hidden;
+      position: relative;
+      box-shadow: 0 8px 20px rgba(0,0,0,0.3);
+      border: 3px solid #0088BE;
+    }
+    
+    .house-image {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.5s ease;
+    }
+    
+    .house-image:hover {
+      transform: scale(1.05);
+    }
+    
+    .house-caption {
+      margin-top: 15px;
+      text-align: center;
+      color: white;
+      font-size: 16px;
+      font-weight: 500;
+    }
+
+    .footer-bottom {
+      margin-top: 20px;
+      text-align: center;
+      font-size: 14px;
+      opacity: 0.85;
+      padding-top: 15px;
+      border-top: 1px solid rgba(209,242,255,0.2);
+      width: 100%;
+      grid-column: 1 / -1;
+      color: #D1F2FF;
+    }
+
+    .back-to-top {
+      position: fixed;
+      bottom: 30px;
+      right: 30px;
+      width: 50px;
+      height: 50px;
+      background-color: #01321F;
+      color: white;
+      border: none;
+      border-radius: 50%;
+      font-size: 24px;
+      cursor: pointer;
+      z-index: 99;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      opacity: 0;
+      visibility: hidden;
+      transition: all 0.3s ease;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+    }
+    
+    .back-to-top.show {
+      opacity: 1;
+      visibility: visible;
+    }
+    
+    .back-to-top:hover {
+      background-color: #0088BE;
+      transform: translateY(-3px);
+    }
+
+    /* Dark Mode Styles */
+    body.dark-mode {
+      background-color: #000000 !important;
+      color: #FFFFFF !important;
+    }
+    
+    body.dark-mode .page-wrapper {
+      background-color: #000000 !important;
+    }
+    
+    body.dark-mode header {
+      background: #000000 !important;
+    }
+    
+    body.dark-mode .site-footer {
+      background: #000000 !important;
+    }
+    
+    body.dark-mode .nav-menu {
+      background: #000000 !important;
+    }
+    
+    body.dark-mode .dropdown-menu-custom {
+      background-color: #000000 !important;
+      border-color: rgba(255,255,255,0.2) !important;
+    }
+    
+    body.dark-mode .brand {
+      color: #FFFFFF !important;
+    }
+    
+    body.dark-mode .nav-link-custom {
+      color: #FFFFFF !important;
+    }
+    
+    body.dark-mode .footer-social-icon {
+      background: rgba(255,255,255,0.15) !important;
+      color: white !important;
+    }
+    
+    body.dark-mode .pricing-card {
+      background: #1a1a1a !important;
+      box-shadow: 0 15px 40px rgba(0,0,0,0.5) !important;
+    }
+    
+    body.dark-mode .pricing-header {
+      background: linear-gradient(135deg, #2a2a2a 0%, #1a1a1a 100%) !important;
+    }
+    
+    body.dark-mode .plan-name,
+    body.dark-mode .price-amount {
+      color: #FFFFFF !important;
+    }
+    
+    body.dark-mode .plan-description,
+    body.dark-mode .price-period {
+      color: #CCCCCC !important;
+    }
+    
+    body.dark-mode .feature-list li {
+      border-bottom-color: #333 !important;
+      color: #CCCCCC !important;
+    }
+    
+    body.dark-mode .feature-list li.disabled {
+      color: #666 !important;
+    }
+    
+    body.dark-mode .toggle-label {
+      color: #CCCCCC !important;
+    }
+    
+    body.dark-mode .faq-section {
+      background: #0a0a0a !important;
+    }
+    
+    body.dark-mode .faq-item {
+      background: #1a1a1a !important;
+    }
+    
+    body.dark-mode .faq-question {
+      color: #FFFFFF !important;
+    }
+    
+    body.dark-mode .faq-question:hover {
+      background: #2a2a2a !important;
+    }
+    
+    body.dark-mode .faq-answer {
+      color: #CCCCCC !important;
+    }
+    
+    body.dark-mode .footer-brand-text p {
+      color: #FFFFFF !important;
+    }
+    
+    body.dark-mode .footer-links li a {
+      color: #FFFFFF !important;
+    }
+    
+    body.dark-mode .footer-bottom {
+      color: #FFFFFF !important;
+      border-top-color: rgba(255,255,255,0.2) !important;
+    }
+    
+    body.dark-mode .house-caption {
+      color: #FFFFFF !important;
+    }
+    
+    body.dark-mode .pricing-hero {
+      background: linear-gradient(135deg, #000000 0%, #1a1a1a 100%);
+    }
+
+    /* ========= UPDATED MOBILE NAVIGATION (SAME PATTERN AS SAMPLE) ========= */
+    @media (max-width: 1030px) { 
+      .navbar-custom { 
+        padding: 10px 16px;
+        gap: 10px; 
+        justify-content: space-between;
+        flex-wrap: wrap;
+      }
+      
+      .brand {
+        order: 1;
+        flex: 1;
+      }
+      
+      .nav-actions.desktop-actions { 
+        display: none; 
+      }
+      
+      .mobile-actions { 
+        display: flex;
+        order: 2;
+      }
+      
+      .menu-toggle { 
+        display: inline-flex;
+        order: 3;
+        align-items: center; 
+        justify-content: center;
+        font-size: 22px;
+        padding: 4px 10px;
+      }
+      
+      .nav-menu { 
+        position: fixed;
+        top: 0;
+        right: -280px;
+        width: 280px;
+        height: auto;
+        max-height: 90vh;
+        flex-direction: column;
+        align-items: flex-start;
+        justify-content: flex-start;
+        background: #01321F;
+        padding: 20px;
+        border-radius: 0 0 0 16px;
+        box-shadow: -12px 0 30px rgba(0, 0, 0, 0.85);
+        z-index: 110;
+        gap: 12px;
+        transition: right 0.3s ease;
+        border: 1px solid rgba(248, 250, 252, 0.6);
+        overflow-y: auto;
+        margin-top: 0;
+      }
+      
+      body.dark-mode .nav-menu {
+        background: #1a1a1a;
+        border-left: 1px solid rgba(255,255,255,0.2);
+      }
+      
+      .nav-menu.nav-open { 
+        right: 0; 
+      }
+      
+      .nav-menu .nav-item {
+        width: 100%;
+        margin: 4px 0;
+      }
+      
+      .nav-menu .nav-link-custom {
+        width: 100%;
+        padding: 10px 0;
+        font-size: 16px;
+      }
+      
+      .nav-menu .nav-link-custom::after {
+        display: none;
+      }
+      
+      .dropdown-menu-custom { 
+        position: static; 
+        margin-top: 4px; 
+        background: rgba(255, 255, 255, 0.05); 
+        border-radius: 8px; 
+        border: none; 
+        box-shadow: none; 
+        padding: 0 0 4px 10px; 
+        display: none;
+      }
+      
+      body.dark-mode .dropdown-menu-custom {
+        background: rgba(255, 255, 255, 0.05);
+      }
+      
+      .dropdown-menu-custom li a { 
+        padding: 8px 0; 
+        font-size: 15px; 
+        opacity: 0.85;
+        white-space: normal;
+      }
+      
+      .nav-item.dropdown.open>.dropdown-menu-custom { 
+        display: block; 
+      }
+      
+      .brand span {
+        font-size: 14px;
+        white-space: normal;
+        line-height: 1.3;
+      }
+      
+      .brand img {
+        width: 48px;
+        height: 48px;
+      }
+      
+      .pricing-grid {
+        grid-template-columns: 1fr;
+        max-width: 500px;
+        margin: 0 auto 60px;
+      }
+      
+      .pricing-card.popular {
+        transform: scale(1);
+      }
+      
+      .pricing-card.popular:hover {
+        transform: translateY(-10px);
+      }
+    }
+
+    @media (max-width: 768px) {
+      .pricing-hero h1 {
+        font-size: 36px;
+      }
+      
+      .pricing-hero p {
+        font-size: 18px;
+      }
+      
+      .plan-name {
+        font-size: 24px;
+      }
+      
+      .price-amount {
+        font-size: 36px;
+      }
+      
+      .pricing-toggle {
+        flex-direction: column;
+        gap: 15px;
+      }
+      
+      .footer-content {
+        grid-template-columns: 1fr;
+        text-align: center;
+        justify-items: center;
+        gap: 40px;
+      }
+      
+      .footer-brand {
+        align-items: center;
+        text-align: center;
+      }
+      
+      .footer-brand-text p {
+        margin-left: auto;
+        margin-right: auto;
+      }
+      
+      .footer-social-icons {
+        justify-content: center;
+      }
+      
+      .footer-column h4 {
+        text-align: center;
+      }
+      
+      .footer-links {
+        text-align: center;
+      }
+      
+      .footer-links li a {
+        justify-content: center;
+        display: inline-flex;
+        align-items: center;
+      }
+      
+      .footer-bottom { text-align: center; }
+      
+      .nav-menu {
+        width: 250px;
+        max-height: 85vh;
+        top: 0;
+        right: -250px;
+      }
+    }
+    
+    @media (max-width: 576px) {
+      .page-wrapper { padding-top: 60px; }
+      .brand span { font-size: 12px; }
+      .brand img { width: 40px; height: 40px; }
+      
+      .mobile-actions .btn-register {
+        padding: 6px 12px;
+        font-size: 14px;
+      }
+    }
+  </style>
+</head>
+<body>
+<div class="page-wrapper">
+  <div class="content-layer">
+    <header>
+      <nav class="navbar-custom">
+        <div class="brand">
+          <img src="Images/logo.jpeg" alt="Compass Housing Society Logo">
+          <span>Housing Compass<br> Society</span>
+        </div>
+
+        <div class="mobile-actions">
+          <div class="theme-toggle" aria-label="Toggle dark / light mode">
+            <span class="moon">🌙</span>
+          </div>
+          <a href="login.html">
+            <button class="btn-register btn-animated" type="button">Sign In</button>
+          </a>
+        </div>
+
+        <ul class="nav-menu">
+          <li class="nav-item"><a href="index.html" class="nav-link-custom">Home 1</a></li>
+          <li class="nav-item"><a href="home2.html" class="nav-link-custom">Home 2</a></li>
+          <li class="nav-item"><a href="aboutus.html" class="nav-link-custom">About Us</a></li>
+          <li class="nav-item dropdown">
+            <span class="nav-link-custom dropdown-toggle-custom">Services</span>
+            <ul class="dropdown-menu-custom">
+              <li><a href="services.html">Service</a></li>
+              <li><a href="servicedetails.html">Service Details</a></li>
+            </ul>
+          </li>
+          <li class="nav-item dropdown">
+            <span class="nav-link-custom dropdown-toggle-custom">Blog</span>
+            <ul class="dropdown-menu-custom">
+              <li><a href="blog.html">Blog</a></li>
+              <li><a href="blogdetails.html">Blog Details</a></li>
+            </ul>
+          </li>
+          <li class="nav-item dropdown">
+            <span class="nav-link-custom dropdown-toggle-custom">Contact Us</span>
+            <ul class="dropdown-menu-custom">
+              <li><a href="contactus.html">Contact Us</a></li>
+              <li><a href="additionalpage.html">404</a></li>
+              <li><a href="pricing.html">Pricing</a></li>
+              <li><a href="commingsoon.html">Comming soon</a></li>
+            </ul>
+          </li>
+        </ul>
+
+        <div class="nav-actions desktop-actions">
+          <div class="theme-toggle" aria-label="Toggle dark / light mode">
+            <span class="moon">🌙</span>
+          </div>
+          <a href="login.html">
+            <button class="btn-register btn-animated" type="button">Sign In</button>
+          </a>
+        </div>
+        <button class="menu-toggle" type="button" aria-label="Toggle menu">☰</button>
+      </nav>
+    </header>
+
+    <main>
+      <section class="pricing-hero">
+        <div class="pricing-hero-content">
+          <h1>Simple, Transparent Pricing</h1>
+          <p>Choose the perfect plan for your real estate needs. No hidden fees, no surprises.</p>
+        </div>
+      </section>
+
+      <section class="pricing-section">
+        <div class="pricing-container">
+          <div class="pricing-toggle">
+            <span class="toggle-label">Monthly</span>
+            <label class="toggle-switch">
+              <input type="checkbox" id="billingToggle">
+              <span class="toggle-slider"></span>
+            </label>
+            <span class="toggle-label">Yearly <span class="save-badge">Save 20%</span></span>
+          </div>
+
+          <div class="pricing-grid">
+            <!-- Basic Plan -->
+            <div class="pricing-card">
+              <div class="pricing-header">
+                <h3 class="plan-name">Basic</h3>
+                <div class="plan-price">
+                  <span class="price-amount" id="basicPrice">$49</span>
+                  <span class="price-period">/month</span>
+                </div>
+                <p class="plan-description">Perfect for individual property seekers</p>
+              </div>
+              <div class="pricing-features">
+                <ul class="feature-list">
+                  <li><i class="fas fa-check-circle"></i> Property Listings Access</li>
+                  <li><i class="fas fa-check-circle"></i> Basic Search Filters</li>
+                  <li><i class="fas fa-check-circle"></i> Email Support</li>
+                  <li><i class="fas fa-check-circle"></i> 5 Property Alerts</li>
+                  <li class="disabled"><i class="fas fa-times-circle"></i> Virtual Tours</li>
+                  <li class="disabled"><i class="fas fa-times-circle"></i> Priority Support</li>
+                  <li class="disabled"><i class="fas fa-times-circle"></i> Investment Analysis</li>
+                </ul>
+              </div>
+              <div class="pricing-footer">
+                <button class="btn-pricing" onclick="alert('Choose Basic Plan')">Get Started</button>
+              </div>
+            </div>
+
+            <!-- Professional Plan (Popular) -->
+            <div class="pricing-card">
+              <div class="popular-badge">Most Popular</div>
+              <div class="pricing-header">
+                <h3 class="plan-name">Professional</h3>
+                <div class="plan-price">
+                  <span class="price-amount" id="proPrice">$99</span>
+                  <span class="price-period">/month</span>
+                </div>
+                <p class="plan-description">Ideal for serious investors and buyers</p>
+              </div>
+              <div class="pricing-features">
+                <ul class="feature-list">
+                  <li><i class="fas fa-check-circle"></i> Everything in Basic</li>
+                  <li><i class="fas fa-check-circle"></i> Advanced Search Filters</li>
+                  <li><i class="fas fa-check-circle"></i> Virtual Property Tours</li>
+                  <li><i class="fas fa-check-circle"></i> Priority Email & Phone Support</li>
+                  <li><i class="fas fa-check-circle"></i> 20 Property Alerts</li>
+                  <li><i class="fas fa-check-circle"></i> Market Analysis Reports</li>
+                  <li class="disabled"><i class="fas fa-times-circle"></i> Dedicated Agent</li>
+                </ul>
+              </div>
+              <div class="pricing-footer">
+                <button class="btn-pricing" onclick="alert('Choose Professional Plan')">Get Started</button>
+              </div>
+            </div>
+
+            <!-- Premium Plan -->
+            <div class="pricing-card">
+              <div class="pricing-header">
+                <h3 class="plan-name">Premium</h3>
+                <div class="plan-price">
+                  <span class="price-amount" id="premiumPrice">$199</span>
+                  <span class="price-period">/month</span>
+                </div>
+                <p class="plan-description">For real estate professionals & agencies</p>
+              </div>
+              <div class="pricing-features">
+                <ul class="feature-list">
+                  <li><i class="fas fa-check-circle"></i> Everything in Professional</li>
+                  <li><i class="fas fa-check-circle"></i> Unlimited Property Alerts</li>
+                  <li><i class="fas fa-check-circle"></i> Dedicated Account Manager</li>
+                  <li><i class="fas fa-check-circle"></i> 24/7 Priority Support</li>
+                  <li><i class="fas fa-check-circle"></i> Advanced Investment Analytics</li>
+                  <li><i class="fas fa-check-circle"></i> API Access</li>
+                  <li><i class="fas fa-check-circle"></i> Custom Reports</li>
+                </ul>
+              </div>
+              <div class="pricing-footer">
+                <button class="btn-pricing" onclick="alert('Choose Premium Plan')">Get Started</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="faq-section">
+        <div class="faq-container">
+          <h2 style="text-align: center; margin-bottom: 50px;">Frequently Asked Questions</h2>
+          
+          <div class="faq-item">
+            <div class="faq-question">
+              <span>Can I switch plans later?</span>
+              <i class="fas fa-chevron-down"></i>
+            </div>
+            <div class="faq-answer">
+              <p>Absolutely! You can upgrade or downgrade your plan at any time. Changes will be reflected in your next billing cycle.</p>
+            </div>
+          </div>
+          
+          <div class="faq-item">
+            <div class="faq-question">
+              <span>Is there a setup fee?</span>
+              <i class="fas fa-chevron-down"></i>
+            </div>
+            <div class="faq-answer">
+              <p>No, there are no setup fees for any of our plans. You only pay the monthly or yearly subscription fee.</p>
+            </div>
+          </div>
+          
+          <div class="faq-item">
+            <div class="faq-question">
+              <span>What payment methods do you accept?</span>
+              <i class="fas fa-chevron-down"></i>
+            </div>
+            <div class="faq-answer">
+              <p>We accept all major credit cards (Visa, MasterCard, American Express), PayPal, and bank transfers for annual plans.</p>
+            </div>
+          </div>
+          
+          <div class="faq-item">
+            <div class="faq-question">
+              <span>Can I cancel my subscription anytime?</span>
+              <i class="fas fa-chevron-down"></i>
+            </div>
+            <div class="faq-answer">
+              <p>Yes, you can cancel your subscription at any time with no cancellation fees. Your access will continue until the end of your billing period.</p>
+            </div>
+          </div>
+          
+          <div class="faq-item">
+            <div class="faq-question">
+              <span>Do you offer a free trial?</span>
+              <i class="fas fa-chevron-down"></i>
+            </div>
+            <div class="faq-answer">
+              <p>Yes! We offer a 14-day free trial on our Professional plan. No credit card required to start your trial.</p>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="site-footer" id="contact">
+      <div class="footer-content">
+        <div class="footer-column">
+          <div class="footer-brand">
+            <div class="footer-brand-text">
+              <h3>Housing Society</h3>
+              <p>Your trusted partner in real estate.<br> Finding homes that become memories.</p>
+            </div>
+            <div class="footer-social-icons">
+              <a href="#" class="footer-social-icon" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+              <a href="#" class="footer-social-icon" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+              <a href="#" class="footer-social-icon" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+              <a href="#" class="footer-social-icon" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+            </div>
+          </div>
+        </div>
+        <div class="footer-column">
+          <h4>Quick Links</h4>
+          <ul class="footer-links">
+            <li><a href="index.html"><i class="fas fa-chevron-right"></i> Home</a></li>
+            <li><a href="aboutus.html"><i class="fas fa-chevron-right"></i> About Us</a></li>
+            <li><a href="services.html"><i class="fas fa-chevron-right"></i> Services</a></li>
+            <li><a href="contactus.html"><i class="fas fa-chevron-right"></i> Contact Us</a></li>
+          </ul>
+        </div>
+        <div class="footer-column">
+          <h4>Our Services</h4>
+          <ul class="footer-links">
+            <li><a href="servicedetails.html"><i class="fas fa-home"></i> Residential Sales</a></li>
+            <li><a href="servicedetails.html"><i class="fas fa-building"></i> Commercial Leasing</a></li>
+            <li><a href="servicedetails.html"><i class="fas fa-chart-line"></i> Investment Properties</a></li>
+            <li><a href="servicedetails.html"><i class="fas fa-search-dollar"></i> Property Valuation</a></li>
+          </ul>
+        </div>
+        <div class="footer-column house-image-column">
+          <div class="house-image-wrapper">
+            <img src="https://images.unsplash.com/photo-1568605114967-8130f3a36994?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Modern Dream Home" class="house-image">
+          </div>
+          <p class="house-caption">Find Your Dream Home Today</p>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>© Copyright Compass Housing Society 2024. All rights reserved.</p>
+      </div>
+    </footer>
+  </div>
+</div>
+<button class="back-to-top" aria-label="Back to top"><i class="fas fa-arrow-up"></i></button>
+
+<script>
+  document.addEventListener("DOMContentLoaded", function () {
+    const body = document.body;
+    const themeToggles = document.querySelectorAll(".theme-toggle");
+    const storedTheme = localStorage.getItem("compass-theme");
+    const themeToggle = () => { 
+      body.classList.toggle("dark-mode"); 
+      localStorage.setItem("compass-theme", body.classList.contains("dark-mode") ? "dark" : "light"); 
+    };
+    if (storedTheme === "dark") body.classList.add("dark-mode");
+    themeToggles.forEach(t => { 
+      t.addEventListener("click", themeToggle); 
+      t.addEventListener("keypress", (e) => { if (e.key === "Enter" || e.key === " ") themeToggle(); }); 
+    });
+
+    const menuToggle = document.querySelector(".menu-toggle");
+    const navMenu = document.querySelector(".nav-menu");
+
+    function closeMenu() {
+      if (navMenu) navMenu.classList.remove("nav-open");
+    }
+
+    if (menuToggle && navMenu) {
+      menuToggle.addEventListener("click", function () {
+        navMenu.classList.toggle("nav-open");
+        const isOpen = navMenu.classList.contains("nav-open");
+        menuToggle.setAttribute("aria-expanded", isOpen);
+        menuToggle.innerHTML = isOpen ? "✕" : "☰";
+      });
+
+      document.addEventListener('click', function(event) {
+        const isClickInsideMenu = navMenu.contains(event.target);
+        const isClickOnToggle = menuToggle.contains(event.target);
+        const isClickOnMobileActions = document.querySelector('.mobile-actions')?.contains(event.target);
+        
+        if (window.innerWidth <= 1030 && !isClickInsideMenu && !isClickOnToggle && !isClickOnMobileActions && navMenu.classList.contains('nav-open')) {
+          closeMenu();
+          menuToggle.setAttribute("aria-expanded", "false");
+          menuToggle.innerHTML = "☰";
+        }
+      });
+
+      document.addEventListener('keydown', function(event) {
+        if (event.key === 'Escape' && window.innerWidth <= 1030 && navMenu.classList.contains('nav-open')) {
+          closeMenu();
+          menuToggle.setAttribute("aria-expanded", "false");
+          menuToggle.innerHTML = "☰";
+        }
+      });
+    }
+
+    const dropdownItems = document.querySelectorAll(".nav-item.dropdown > .nav-link-custom");
+
+    dropdownItems.forEach(link => {
+      link.addEventListener("click", function (e) {
+        e.preventDefault();
+        const parent = this.parentElement;
+
+        document.querySelectorAll(".nav-item.dropdown.open").forEach(item => {
+          if (item !== parent) {
+            item.classList.remove("open");
+          }
+        });
+
+        parent.classList.toggle("open");
+      });
+    });
+
+    const normalLinks = document.querySelectorAll(".nav-item:not(.dropdown) .nav-link-custom, .nav-item:not(.dropdown) a");
+
+    normalLinks.forEach(l => {
+      l.addEventListener("click", function () {
+        if (window.innerWidth <= 1030) {
+          closeMenu();
+          if (menuToggle) {
+            menuToggle.setAttribute("aria-expanded", "false");
+            menuToggle.innerHTML = "☰";
+          }
+        }
+      });
+    });
+
+    const backBtn = document.querySelector('.back-to-top');
+    if (backBtn) {
+      window.addEventListener('scroll', function() { 
+        backBtn.classList.toggle('show', window.pageYOffset > 300); 
+      });
+      
+      backBtn.addEventListener('click', function() { 
+        window.scrollTo({ top: 0, behavior: 'smooth' }); 
+      });
+    }
+
+    window.addEventListener('resize', function() {
+      if (window.innerWidth > 1030 && navMenu && navMenu.classList.contains('nav-open')) {
+        closeMenu();
+        if (menuToggle) {
+          menuToggle.setAttribute("aria-expanded", "false");
+          menuToggle.innerHTML = "☰";
+        }
+      }
+    });
+
+    // Pricing Toggle (Monthly/Yearly)
+    const billingToggle = document.getElementById('billingToggle');
+    const basicPrice = document.getElementById('basicPrice');
+    const proPrice = document.getElementById('proPrice');
+    const premiumPrice = document.getElementById('premiumPrice');
+    
+    if (billingToggle) {
+      billingToggle.addEventListener('change', function() {
+        if (this.checked) {
+          // Yearly pricing (20% discount)
+          basicPrice.textContent = '$470';
+          proPrice.textContent = '$950';
+          premiumPrice.textContent = '$1,910';
+          document.querySelectorAll('.price-period').forEach(el => el.textContent = '/year');
+        } else {
+          // Monthly pricing
+          basicPrice.textContent = '$49';
+          proPrice.textContent = '$99';
+          premiumPrice.textContent = '$199';
+          document.querySelectorAll('.price-period').forEach(el => el.textContent = '/month');
+        }
+      });
+    }
+
+    // FAQ Accordion
+    const faqItems = document.querySelectorAll('.faq-item');
+    faqItems.forEach(item => {
+      const question = item.querySelector('.faq-question');
+      question.addEventListener('click', () => {
+        item.classList.toggle('active');
+      });
+    });
+  });
+</script>
+</body>
+</html>

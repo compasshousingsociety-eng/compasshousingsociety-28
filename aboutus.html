@@ -1,0 +1,1352 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+  <title>Compass Housing Society - About Us</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <style>
+    :root {
+      --primary: #01321F;
+      --accent: #0088BE;
+      --light-bg: #D1F2FF;
+      --light: #FFFFFF;
+      --dark: #0A1A2A;
+      --dark-bg: #0B1B2B;
+      --soft-accent: rgba(0,136,190,0.12);
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: 'DM Sans', sans-serif;
+      color: var(--dark);
+      background-color: var(--light);
+      transition: background-color 0.3s, color 0.3s;
+    }
+
+    /* Remove ALL default bold weights */
+    h1, h2, h3, h4, h5, h6, 
+    .h1, .h2, .h3, .h4, .h5, .h6,
+    .section-title, .stat-number, .brand, .nav-link-custom,
+    .btn-register, .footer-title, .footer-links-list li a,
+    .contact-info-item span, .stat-box .number, .stat-box .label,
+    .team-content h3, .team-content .position, .value-card h3,
+    .mv-card h3, .about-content h2 {
+      font-weight: 400 !important;
+    }
+    
+    strong, b {
+      font-weight: 400 !important;
+    }
+
+    h1 { font-size: 46px; line-height: 1.2; letter-spacing: -0.02em; }
+    h2 { font-size: 36px; line-height: 1.3; letter-spacing: -0.01em; }
+    h3 { font-size: 24px; line-height: 1.4; }
+    h4 { font-size: 20px; line-height: 1.4; }
+    h5 { font-size: 18px; line-height: 1.4; }
+    h6 { font-size: 16px; line-height: 1.4; }
+    li, span, p { font-size: 18px; line-height: 1.6; font-weight: 400; }
+    a { text-decoration: none; color: inherit; }
+    ul { list-style: none; padding-left: 0; margin-bottom: 0; }
+
+    /* DARK MODE - PURE BLACK BACKGROUND */
+    body.dark-mode {
+      background-color: #000000 !important;
+      color: #FFFFFF !important;
+    }
+
+    body.dark-mode .page-wrapper {
+      background-color: #000000 !important;
+    }
+
+    body.dark-mode .content-layer {
+      background-color: #000000 !important;
+    }
+
+    body.dark-mode header {
+      background: #000000 !important;
+      border-bottom: 1px solid rgba(0,136,190,0.5);
+    }
+
+    body.dark-mode .navbar-custom,
+    body.dark-mode header,
+    body.dark-mode .nav-menu {
+      background: #000000 !important;
+    }
+
+    body.dark-mode .nav-link-custom {
+      color: #FFFFFF !important;
+    }
+
+    body.dark-mode .site-footer {
+      background: #000000 !important;
+      border-top-color: #0088BE40 !important;
+    }
+    
+    body.dark-mode .footer-title,
+    body.dark-mode .footer-about p,
+    body.dark-mode .footer-links-list li a,
+    body.dark-mode .contact-info-item span,
+    body.dark-mode .copyright,
+    body.dark-mode .footer-legal a {
+      color: #FFFFFF !important;
+    }
+
+    body.dark-mode .about-section {
+      background: #000000 !important;
+    }
+
+    body.dark-mode .about-content h2 {
+      color: #FFFFFF !important;
+    }
+    
+    body.dark-mode .about-content p {
+      color: #FFFFFF !important;
+    }
+    
+    body.dark-mode .stat-box {
+      background: #111111 !important;
+      border-color: #2a2a2a !important;
+    }
+    
+    body.dark-mode .stat-box .number,
+    body.dark-mode .stat-box .label {
+      color: #FFFFFF !important;
+    }
+    
+    body.dark-mode .mission-vision {
+      background: #000000 !important;
+    }
+    
+    body.dark-mode .mv-card {
+      background: #111111 !important;
+      border-color: #2a2a2a !important;
+    }
+    
+    body.dark-mode .mv-card h3,
+    body.dark-mode .mv-card p {
+      color: #FFFFFF !important;
+    }
+    
+    body.dark-mode .values-section {
+      background: #000000 !important;
+    }
+    
+    body.dark-mode .value-card {
+      background: #111111 !important;
+      border-color: #2a2a2a !important;
+    }
+    
+    body.dark-mode .value-card h3,
+    body.dark-mode .value-card p {
+      color: #FFFFFF !important;
+    }
+    
+    body.dark-mode .team-section {
+      background: #000000 !important;
+    }
+    
+    body.dark-mode .team-card {
+      background: #111111 !important;
+      border-color: #2a2a2a !important;
+    }
+    
+    body.dark-mode .team-content h3,
+    body.dark-mode .team-content p,
+    body.dark-mode .team-content .position {
+      color: #FFFFFF !important;
+    }
+    
+    body.dark-mode .section-title,
+    body.dark-mode .section-description {
+      color: #FFFFFF !important;
+    }
+    
+    body.dark-mode .page-header {
+      background: #000000 !important;
+      border-bottom: 1px solid rgba(0,136,190,0.3);
+    }
+
+    /* watermark */
+    body::after {
+      content: "";
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background-image: url("Images/transparent-logo.jpeg");
+      background-repeat: no-repeat;
+      background-position: center;
+      background-size: 570px auto;
+      opacity: 0.08;
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    .page-wrapper {
+      max-width: 1920px;
+      margin: 0 auto;
+      min-height: 100vh;
+      position: relative;
+      overflow-x: hidden;
+      padding-top: 82px;
+      background-color: var(--light);
+      transition: background-color 0.3s;
+    }
+
+    .content-layer { 
+      position: relative; 
+      z-index: 1;
+      min-height: calc(100vh - 200px);
+    }
+
+    /* HEADER - same as index */
+    header {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      z-index: 100;
+      background: #01321F;
+      box-shadow: 0 8px 22px rgba(0,0,0,0.55);
+      transition: background 0.3s;
+    }
+
+    .navbar-custom { 
+      display: flex; 
+      align-items: center; 
+      justify-content: space-between; 
+      gap: 24px; 
+      position: relative;
+      padding: 12px 40px;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-weight: 400 !important;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      white-space: nowrap;
+      color: #FFFFFF;
+    }
+
+    .brand span {
+      font-weight: 400;
+    }
+
+    .brand img { 
+      width: 58px; 
+      height: 58px; 
+      object-fit: cover; 
+      border-radius: 8px;
+      border: 2px solid #FFFFFF; 
+      opacity: 0.97; 
+      background: transparent; 
+    }
+
+    .nav-menu { 
+      display: flex; 
+      align-items: center; 
+      gap: 24px; 
+      flex: 1; 
+      justify-content: center; 
+      flex-wrap: wrap; 
+    }
+
+    .nav-item { position: relative; }
+    .nav-link-custom {
+      color: #FFFFFF;
+      padding: 4px 0;
+      opacity: 0.95;
+      position: relative;
+      cursor: pointer;
+      display: inline-block;
+      transition: color 0.25s ease, opacity 0.25s ease;
+      font-weight: 400 !important;
+    }
+
+    .nav-link-custom::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      bottom: -3px;
+      width: 0%;
+      height: 2px;
+      background-color: #0088BE;
+      transition: width 0.25s ease;
+    }
+
+    .nav-link-custom:hover::after { width: 100%; }
+    .dropdown-toggle-custom::after { content: " ▾"; position: static; width: auto; height: auto; background: none; margin-left: 4px; }
+
+    .dropdown-menu-custom {
+      position: absolute;
+      left: 0;
+      top: calc(100% + 6px);
+      background-color: #01321F;
+      border-radius: 10px;
+      border: 1px solid rgba(255,255,255,0.12);
+      min-width: 190px;
+      display: none;
+      padding: 6px 0;
+      z-index: 120;
+      box-shadow: 0 12px 20px rgba(0,0,0,0.6);
+    }
+
+    .dropdown-menu-custom li a {
+      display: block;
+      padding: 8px 18px;
+      color: #FFFFFF;
+      white-space: nowrap;
+      opacity: 0.9;
+      transition: background-color 0.25s ease, opacity 0.25s ease, color 0.25s ease;
+      font-weight: 400 !important;
+    }
+
+    .dropdown-menu-custom li a:hover { background-color: rgba(0,136,190,0.25); opacity: 1; color: #D1F2FF; }
+    .nav-item.dropdown.open>.dropdown-menu-custom { display: block; }
+
+    .nav-actions { 
+      display: flex; 
+      align-items: center; 
+      gap: 12px; 
+      margin-left: auto; 
+    }
+
+    .btn-animated { 
+      transition: transform 0.25s ease, box-shadow 0.25s ease, filter 0.25s ease; 
+      box-shadow: 0 6px 16px rgba(0,0,0,0.45); 
+    }
+
+    .btn-animated:hover { 
+      transform: translateY(-2px); 
+      box-shadow: 0 10px 26px rgba(0,0,0,0.7); 
+      filter: brightness(0.96); 
+    }
+
+    .btn-register {
+      background: #0088BE;
+      color: #FFFFFF;
+      border: none;
+      padding: 8px 15px;
+      border-radius: 999px;
+      font-weight: 400 !important;
+      cursor: pointer;
+      white-space: nowrap;
+      font-family: 'DM Sans', sans-serif;
+      font-size: 16px;
+    }
+
+    .theme-toggle {
+      position: relative;
+      width: 70px;
+      height: 34px;
+      border-radius: 34px;
+      background: linear-gradient(145deg, #4a4a4a, #2a2a2a);
+      border: 2px solid rgba(255,255,255,0.3);
+      cursor: pointer;
+      transition: all 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+      box-shadow: inset 0 2px 4px rgba(0,0,0,0.3), 0 4px 12px rgba(0,0,0,0.25);
+      overflow: hidden;
+      flex-shrink: 0;
+    }
+
+    .theme-toggle::before {
+      content: '';
+      position: absolute;
+      top: 3px;
+      left: 3px;
+      width: 26px;
+      height: 26px;
+      background: linear-gradient(145deg, #FFD700, #FFA500);
+      border-radius: 50%;
+      transition: all 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+      z-index: 2;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.3), inset 0 -1px 2px rgba(255,255,255,0.2);
+    }
+
+    .theme-toggle::after {
+      content: '☀️';
+      position: absolute;
+      top: 50%;
+      right: 10px;
+      transform: translateY(-50%);
+      font-size: 14px;
+      opacity: 0.9;
+      filter: drop-shadow(0 1px 2px rgba(0,0,0,0.3));
+      transition: all 0.4s ease;
+      z-index: 1;
+    }
+
+    .theme-toggle .moon {
+      position: absolute;
+      top: 50%;
+      left: 10px;
+      transform: translateY(-50%);
+      font-size: 14px;
+      opacity: 0.4;
+      filter: drop-shadow(0 1px 2px rgba(0,0,0,0.3));
+      transition: all 0.4s ease;
+      pointer-events: none;
+    }
+
+    body.dark-mode .theme-toggle {
+      background: linear-gradient(145deg, #1e3a5f, #0a1a2a);
+      border-color: rgba(255,255,255,0.5);
+    }
+
+    body.dark-mode .theme-toggle::before {
+      left: calc(100% - 29px);
+      background: linear-gradient(145deg, #E0E0E0, #C0C0C0);
+    }
+
+    body.dark-mode .theme-toggle::after {
+      content: '🌙';
+      right: auto;
+      left: 10px;
+      opacity: 1;
+    }
+
+    body.dark-mode .theme-toggle .moon {
+      opacity: 0;
+    }
+
+    .menu-toggle {
+      display: none;
+      border: 1px solid #FFFFFF;
+      background: transparent;
+      font-size: 22px;
+      line-height: 1;
+      cursor: pointer;
+      color: #FFFFFF;
+      padding: 4px 10px;
+      border-radius: 4px;
+      z-index: 1001;
+      transition: background 0.2s;
+    }
+    
+    .menu-toggle:hover {
+      background: rgba(255,255,255,0.1);
+    }
+
+    .mobile-actions {
+      display: none;
+      align-items: center;
+      gap: 12px;
+      margin-left: auto;
+    }
+
+    /* Page Header */
+    .page-header {
+      background-color: #01321F;
+      padding: 60px 20px;
+      text-align: center;
+      color: white;
+      position: relative;
+    }
+
+    .page-header-content {
+      position: relative;
+      z-index: 2;
+      max-width: 800px;
+      margin: 0 auto;
+    }
+
+    .page-header h1 {
+      font-size: 56px;
+      color: white;
+      margin-bottom: 20px;
+      font-weight: 400 !important;
+    }
+
+    .page-header p {
+      font-size: 20px;
+      color: rgba(255,255,255,0.9);
+      line-height: 1.7;
+    }
+
+    /* About Section */
+    .about-section {
+      padding: 80px 20px;
+      background: var(--light);
+    }
+
+    .about-container {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 60px;
+      align-items: center;
+    }
+
+    .about-content h2 {
+      font-size: 42px;
+      color: #01321F;
+      margin-bottom: 25px;
+      line-height: 1.2;
+      font-weight: 400 !important;
+    }
+
+    .about-content h2 span {
+      color: #0088BE;
+    }
+
+    .about-content p {
+      color: #2C4C3E;
+      margin-bottom: 20px;
+      line-height: 1.8;
+    }
+
+    .about-stats {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 30px;
+      margin-top: 40px;
+    }
+
+    .stat-box {
+      text-align: center;
+      padding: 25px;
+      background-color: #F7FDFF;
+      border-radius: 15px;
+      transition: all 0.4s ease;
+      border: 1px solid #E8F0F5;
+    }
+
+    .stat-box:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 15px 40px rgba(0,136,190,0.15);
+      border-color: var(--accent);
+    }
+
+    .stat-box .number {
+      font-size: 42px;
+      color: #0088BE;
+      display: block;
+      line-height: 1;
+      margin-bottom: 10px;
+    }
+
+    .stat-box .label {
+      font-size: 16px;
+      color: #01321F;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+
+    .about-image {
+      position: relative;
+      border-radius: 20px;
+      overflow: hidden;
+      box-shadow: 20px 20px 0 rgba(0,136,190,0.12);
+    }
+
+    .about-image img {
+      width: 100%;
+      height: auto;
+      display: block;
+      transition: transform 0.6s ease;
+    }
+
+    .about-image:hover img {
+      transform: scale(1.05);
+    }
+
+    /* Mission Vision */
+    .mission-vision {
+      padding: 80px 20px;
+      background-color: #F7FDFF;
+    }
+
+    .mv-container {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 40px;
+    }
+
+    .mv-card {
+      background: white;
+      padding: 50px 40px;
+      border-radius: 20px;
+      text-align: center;
+      transition: all 0.4s ease;
+      border: 1px solid #E8F0F5;
+    }
+
+    .mv-card:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 25px 60px rgba(0,136,190,0.15);
+      border-color: var(--accent);
+    }
+
+    .mv-icon {
+      width: 90px;
+      height: 90px;
+      background-color: #0088BE;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto 30px;
+      color: white;
+      font-size: 40px;
+      transition: all 0.4s ease;
+    }
+
+    .mv-card:hover .mv-icon {
+      transform: scale(1.1) rotate(5deg);
+    }
+
+    .mv-card h3 {
+      font-size: 28px;
+      color: #01321F;
+      margin-bottom: 20px;
+      font-weight: 400 !important;
+    }
+
+    .mv-card p {
+      color: #2C4C3E;
+      line-height: 1.8;
+      font-size: 17px;
+    }
+
+    /* Values Section */
+    .values-section {
+      padding: 80px 20px;
+      background: var(--light);
+    }
+
+    .section-header {
+      text-align: center;
+      max-width: 800px;
+      margin: 0 auto 50px;
+    }
+
+    .section-title {
+      margin-bottom: 20px;
+      color: #01321F;
+      font-size: 48px;
+      font-weight: 400 !important;
+    }
+
+    .section-description {
+      color: #2C4C3E;
+      max-width: 700px;
+      margin: 0 auto;
+    }
+
+    .values-grid {
+      max-width: 1200px;
+      margin: 50px auto 0;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 30px;
+    }
+
+    .value-card {
+      background-color: #F7FDFF;
+      border-radius: 20px;
+      padding: 40px 30px;
+      text-align: center;
+      transition: all 0.4s ease;
+      border: 1px solid #E8F0F5;
+    }
+
+    .value-card:hover {
+      transform: translateY(-10px);
+      border-color: #0088BE;
+      box-shadow: 0 20px 50px rgba(0,136,190,0.12);
+    }
+
+    .value-icon {
+      width: 70px;
+      height: 70px;
+      background: rgba(0,136,190,0.1);
+      border-radius: 20px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto 25px;
+      font-size: 30px;
+      color: #0088BE;
+      transition: all 0.4s ease;
+    }
+
+    .value-card:hover .value-icon {
+      background: #0088BE;
+      color: white;
+      transform: scale(1.1) rotate(5deg);
+    }
+
+    .value-card h3 {
+      font-size: 22px;
+      color: #01321F;
+      margin-bottom: 15px;
+      font-weight: 400 !important;
+    }
+
+    .value-card p {
+      color: #2C4C3E;
+      line-height: 1.7;
+    }
+
+    /* Team Section */
+    .team-section {
+      padding: 80px 20px;
+      background: var(--light);
+    }
+
+    .team-grid {
+      max-width: 1200px;
+      margin: 50px auto 0;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 40px;
+    }
+
+    .team-card {
+      background: white;
+      border-radius: 20px;
+      overflow: hidden;
+      transition: all 0.4s ease;
+      border: 1px solid #E8F0F5;
+    }
+
+    .team-card:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 25px 60px rgba(0,136,190,0.15);
+      border-color: var(--accent);
+    }
+
+    .team-image {
+      height: 300px;
+      overflow: hidden;
+    }
+
+    .team-image img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.6s ease;
+    }
+
+    .team-card:hover .team-image img {
+      transform: scale(1.1);
+    }
+
+    .team-content {
+      padding: 25px;
+      text-align: center;
+    }
+
+    .team-content h3 {
+      font-size: 22px;
+      color: #01321F;
+      margin-bottom: 5px;
+      font-weight: 400 !important;
+    }
+
+    .team-content .position {
+      color: #0088BE;
+      margin-bottom: 15px;
+      font-size: 16px;
+    }
+
+    .team-content p {
+      color: #2C4C3E;
+      font-size: 15px;
+      line-height: 1.6;
+      margin-bottom: 20px;
+    }
+
+    .team-social {
+      display: flex;
+      justify-content: center;
+      gap: 15px;
+    }
+
+    .team-social a {
+      width: 40px;
+      height: 40px;
+      background: rgba(0,136,190,0.1);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #0088BE;
+      transition: all 0.3s ease;
+    }
+
+    .team-social a:hover {
+      background: #0088BE;
+      color: white;
+      transform: translateY(-3px);
+    }
+
+    /* FOOTER - same as index */
+    .site-footer {
+      background: #01321F;
+      color: #FFFFFF;
+      width: 100%;
+      transition: background 0.3s;
+      position: relative;
+      margin-top: 0;
+      padding: 70px 0 30px;
+      border-top: 1px solid rgba(0,136,190,0.3);
+    }
+
+    .footer-container {
+      max-width: 1400px;
+      margin: 0 auto;
+      padding: 0 40px;
+    }
+
+    .footer-grid {
+      display: grid;
+      grid-template-columns: 2fr 1fr 1.5fr 1.5fr;
+      gap: 50px;
+      margin-bottom: 50px;
+    }
+
+    .footer-about p {
+      color: rgba(255,255,255,0.85);
+      font-size: 15px;
+      line-height: 1.7;
+      margin-top: 20px;
+      max-width: 320px;
+    }
+
+    .footer-logo {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 20px;
+    }
+
+    .footer-logo img {
+      width: 52px;
+      height: 52px;
+      border-radius: 12px;
+      border: 2px solid #0088BE;
+      object-fit: cover;
+    }
+
+    .footer-logo h3 {
+      font-size: 22px;
+      font-weight: 400 !important;
+      letter-spacing: 1px;
+      margin: 0;
+      color: white;
+    }
+
+    .footer-title {
+      font-size: 20px;
+      font-weight: 400 !important;
+      margin-bottom: 28px;
+      position: relative;
+      display: inline-block;
+      color: white;
+    }
+
+    .footer-title::after {
+      content: '';
+      position: absolute;
+      left: 0;
+      bottom: -8px;
+      width: 45px;
+      height: 3px;
+      background: #0088BE;
+      border-radius: 4px;
+    }
+
+    .footer-links-list {
+      list-style: none;
+      padding: 0;
+    }
+
+    .footer-links-list li {
+      margin-bottom: 14px;
+    }
+
+    .footer-links-list li a {
+      color: rgba(255,255,255,0.8);
+      text-decoration: none;
+      transition: all 0.3s;
+      font-size: 15px;
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      font-weight: 400 !important;
+    }
+
+    .footer-links-list li a i {
+      font-size: 12px;
+      color: #0088BE;
+      transition: transform 0.2s;
+    }
+
+    .footer-links-list li a:hover {
+      color: #FFFFFF;
+      transform: translateX(5px);
+    }
+
+    .contact-info-item {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 22px;
+    }
+
+    .contact-info-item i {
+      width: 36px;
+      height: 36px;
+      background: rgba(0,136,190,0.2);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 16px;
+      color: #0088BE;
+    }
+
+    .contact-info-item span {
+      font-weight: 400 !important;
+    }
+
+    .newsletter-form {
+      margin-top: 20px;
+      display: flex;
+      flex-direction: column;
+      gap: 15px;
+    }
+
+    .newsletter-input {
+      background: rgba(255,255,255,0.12);
+      border: 1px solid rgba(255,255,255,0.25);
+      padding: 12px 18px;
+      border-radius: 50px;
+      color: white;
+      font-size: 14px;
+      outline: none;
+      font-weight: 400;
+    }
+
+    .newsletter-input:focus {
+      border-color: #0088BE;
+      background: rgba(255,255,255,0.2);
+    }
+
+    .newsletter-btn {
+      background: #0088BE;
+      border: none;
+      padding: 12px 20px;
+      border-radius: 50px;
+      color: white;
+      font-weight: 400 !important;
+      cursor: pointer;
+      transition: all 0.3s;
+    }
+
+    .newsletter-btn:hover {
+      background: #016c99;
+      transform: translateY(-2px);
+    }
+
+    .social-links-new {
+      display: flex;
+      gap: 14px;
+      margin-top: 25px;
+    }
+
+    .social-icon-new {
+      width: 38px;
+      height: 38px;
+      background: rgba(255,255,255,0.1);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: white;
+      font-size: 18px;
+      transition: all 0.3s ease;
+    }
+
+    .social-icon-new:hover {
+      background: #0088BE;
+      transform: translateY(-3px);
+    }
+
+    .footer-bottom-new {
+      text-align: center;
+      padding-top: 30px;
+      border-top: 1px solid rgba(255,255,255,0.15);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+    }
+
+    .copyright {
+      font-size: 14px;
+      color: rgba(255,255,255,0.7);
+      font-weight: 400;
+    }
+
+    .footer-legal {
+      display: flex;
+      gap: 25px;
+    }
+
+    .footer-legal a {
+      font-size: 13px;
+      color: rgba(255,255,255,0.7);
+      font-weight: 400;
+    }
+
+    .back-to-top {
+      position: fixed;
+      bottom: 30px;
+      right: 30px;
+      width: 50px;
+      height: 50px;
+      background-color: #01321F;
+      color: white;
+      border: none;
+      border-radius: 50%;
+      font-size: 24px;
+      cursor: pointer;
+      z-index: 99;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      opacity: 0;
+      visibility: hidden;
+      transition: all 0.3s ease;
+    }
+    .back-to-top.show { opacity: 1; visibility: visible; }
+    .back-to-top:hover { background-color: #0088BE; }
+
+    /* Toast Notification */
+    .toast-notification {
+      position: fixed;
+      top: 100px;
+      left: 50%;
+      transform: translateX(-50%) translateY(-30px);
+      background: #01321F;
+      color: white;
+      padding: 14px 28px;
+      border-radius: 50px;
+      font-weight: 400;
+      font-size: 16px;
+      z-index: 2000;
+      opacity: 0;
+      visibility: hidden;
+      transition: all 0.3s ease;
+      box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      backdrop-filter: blur(8px);
+      white-space: nowrap;
+      border-left: 4px solid #0088BE;
+    }
+
+    body.dark-mode .toast-notification {
+      background: #1a1a1a;
+      color: #fff;
+      border-left-color: #0088BE;
+    }
+
+    .toast-notification.show {
+      opacity: 1;
+      visibility: visible;
+      transform: translateX(-50%) translateY(0);
+    }
+
+    .toast-notification i {
+      font-size: 22px;
+      color: #0088BE;
+    }
+
+    /* Responsive */
+    @media (max-width: 1030px) { 
+      .navbar-custom { padding: 10px 16px; flex-wrap: wrap; }
+      .brand { order: 1; flex: 1; }
+      .nav-actions.desktop-actions { display: none; }
+      .mobile-actions { display: flex; order: 2; }
+      .menu-toggle { display: inline-flex; order: 3; }
+      .nav-menu { position: fixed; top: 0; right: -280px; width: 280px; flex-direction: column; background: #01321F; padding: 20px; z-index: 110; transition: right 0.3s; }
+      .nav-menu.nav-open { right: 0; }
+      .dropdown-menu-custom { position: static; }
+      .about-container { grid-template-columns: 1fr; text-align: center; }
+      .mv-container { grid-template-columns: 1fr; }
+      .footer-grid { grid-template-columns: 1fr 1fr; gap: 40px; }
+      .footer-container { padding: 0 20px; }
+    }
+    
+    @media (max-width: 768px) { 
+      .page-header h1 { font-size: 42px; }
+      .about-stats { grid-template-columns: 1fr; }
+      .section-title { font-size: 36px; }
+      .footer-grid { grid-template-columns: 1fr; }
+      .footer-bottom-new { flex-direction: column; gap: 15px; text-align: center; }
+      .footer-legal { justify-content: center; }
+    }
+  </style>
+</head>
+<body>
+<div class="page-wrapper">
+  <div class="content-layer">
+    <header>
+      <nav class="navbar-custom">
+        <div class="brand"><img src="Images/logo.jpeg" alt="Compass Housing Society Logo"><span>Compass Housing<br> Society</span></div>
+        <div class="mobile-actions"><div class="theme-toggle"><span class="moon">🌙</span></div><a href="login.html"><button class="btn-register btn-animated">Sign In</button></a></div>
+        <ul class="nav-menu">
+          <li class="nav-item"><a href="index.html" class="nav-link-custom">Home 1</a></li>
+          <li class="nav-item"><a href="home2.html" class="nav-link-custom">Home 2</a></li>
+          <li class="nav-item dropdown"><span class="nav-link-custom dropdown-toggle-custom">Services</span><ul class="dropdown-menu-custom"><li><a href="services.html">Service</a></li><li><a href="servicedetails.html">Service Details</a></li></ul></li>
+          <li class="nav-item"><a href="aboutus.html" class="nav-link-custom">About Us</a></li>
+          <li class="nav-item dropdown"><span class="nav-link-custom dropdown-toggle-custom">Contact Us</span><ul class="dropdown-menu-custom"><li><a href="contactus.html">Contact Us</a></li><li><a href="additionalpage.html">404</a></li><li><a href="pricing.html">Pricing</a></li><li><a href="commingsoon.html">Comming soon</a></li></ul></li>
+          <li class="nav-item dropdown"><span class="nav-link-custom dropdown-toggle-custom">Blog</span><ul class="dropdown-menu-custom"><li><a href="blog.html">Blog</a></li><li><a href="blogdetails.html">Blog Details</a></li></ul></li>
+        </ul>
+        <div class="nav-actions desktop-actions"><div class="theme-toggle"><span class="moon">🌙</span></div><a href="login.html"><button class="btn-register btn-animated">Sign In</button></a></div>
+        <button class="menu-toggle">☰</button>
+      </nav>
+    </header>
+
+    <main>
+      <section class="page-header">
+        <div class="page-header-content">
+          <h1>About Compass Housing Society</h1>
+          <p>Discover the story behind our commitment to excellence in real estate and our passion for helping clients find their perfect home.</p>
+        </div>
+      </section>
+
+      <section class="about-section">
+        <div class="about-container">
+          <div class="about-content">
+            <h2>Your Trusted Partner in Real Estate Since 1999</h2>
+            <p>Compass Housing Society has been at the forefront of the real estate industry for over two decades. Founded with a vision to transform the property buying and selling experience, we have grown to become one of the most respected names in the market.</p>
+            <p>Our journey began with a simple belief: that finding a home should be an exciting and rewarding experience. Today, we continue to uphold that belief through personalized service and unwavering dedication to our clients.</p>
+            <div class="about-stats">
+              <div class="stat-box">
+                <span class="number">500+</span>
+                <span class="label">Properties Sold</span>
+              </div>
+              <div class="stat-box">
+                <span class="number">25+</span>
+                <span class="label">Years Experience</span>
+              </div>
+            </div>
+          </div>
+          <div class="about-image">
+            <img src="https://images.unsplash.com/photo-1560518883-ce09059eeffa?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="About Compass Housing Society">
+          </div>
+        </div>
+      </section>
+
+      <section class="mission-vision">
+        <div class="mv-container">
+          <div class="mv-card">
+            <div class="mv-icon">
+              <i class="fas fa-bullseye"></i>
+            </div>
+            <h3>Our Mission</h3>
+            <p>To provide exceptional real estate services that exceed client expectations, build lasting relationships, and create value through integrity, innovation, and market expertise.</p>
+          </div>
+          <div class="mv-card">
+            <div class="mv-icon">
+              <i class="fas fa-eye"></i>
+            </div>
+            <h3>Our Vision</h3>
+            <p>To be the most trusted and innovative real estate company, recognized for our commitment to excellence, our deep market knowledge, and our ability to make dreams of homeownership come true.</p>
+          </div>
+        </div>
+      </section>
+
+      <section class="values-section">
+        <div class="section-header">
+          <h2 class="section-title">What Drives Us Forward</h2>
+          <p class="section-description">These core principles guide every interaction and decision we make.</p>
+        </div>
+        <div class="values-grid">
+          <div class="value-card">
+            <div class="value-icon"><i class="fas fa-handshake"></i></div>
+            <h3>Integrity</h3>
+            <p>We operate with honesty and transparency in all our dealings, building trust with clients.</p>
+          </div>
+          <div class="value-card">
+            <div class="value-icon"><i class="fas fa-star"></i></div>
+            <h3>Excellence</h3>
+            <p>We strive for excellence in every aspect of our service, from market analysis to client communication.</p>
+          </div>
+          <div class="value-card">
+            <div class="value-icon"><i class="fas fa-users"></i></div>
+            <h3>Client Focus</h3>
+            <p>Our clients' needs and goals are at the heart of everything we do, ensuring personalized solutions.</p>
+          </div>
+        </div>
+      </section>
+
+      <section class="team-section">
+        <div class="section-header">
+          <h2 class="section-title">Meet The Team Behind Your Success</h2>
+          <p class="section-description">Dedicated professionals committed to helping you achieve your real estate goals.</p>
+        </div>
+        <div class="team-grid">
+          <div class="team-card">
+            <div class="team-image"><img src="https://images.unsplash.com/photo-1560250097-0b93528c311a?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80" alt="John Anderson"></div>
+            <div class="team-content"><h3>John Anderson</h3><p class="position">CEO & Founder</p><p>With over 25 years of experience, John leads our team with vision and expertise.</p><div class="team-social"><a href="#"><i class="fab fa-linkedin-in"></i></a><a href="#"><i class="fab fa-twitter"></i></a><a href="#"><i class="fas fa-envelope"></i></a></div></div>
+          </div>
+          <div class="team-card">
+            <div class="team-image"><img src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80" alt="Sarah Mitchell"></div>
+            <div class="team-content"><h3>Sarah Mitchell</h3><p class="position">Managing Director</p><p>Sarah oversees operations and ensures exceptional service delivery across all offices.</p><div class="team-social"><a href="#"><i class="fab fa-linkedin-in"></i></a><a href="#"><i class="fab fa-twitter"></i></a><a href="#"><i class="fas fa-envelope"></i></a></div></div>
+          </div>
+          <div class="team-card">
+            <div class="team-image"><img src="https://images.unsplash.com/photo-1556157382-97eda2d62296?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80" alt="Michael Chen"></div>
+            <div class="team-content"><h3>Michael Chen</h3><p class="position">Head of Sales</p><p>Michael leads our sales team with a track record of exceeding client expectations.</p><div class="team-social"><a href="#"><i class="fab fa-linkedin-in"></i></a><a href="#"><i class="fab fa-twitter"></i></a><a href="#"><i class="fas fa-envelope"></i></a></div></div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <!-- FOOTER - SAME AS INDEX PAGE -->
+    <footer class="site-footer">
+      <div class="footer-container">
+        <div class="footer-grid">
+          <div class="footer-about">
+            <div class="footer-logo">
+              <img src="Images/logo.jpeg" alt="Compass Logo">
+              <h3>Compass Housing</h3>
+            </div>
+            <p>Curating exceptional spaces and redefining luxury real estate experiences worldwide. Your journey to premium living begins here.</p>
+            <div class="social-links-new">
+              <a href="http://www.facebook.com" class="social-icon-new"><i class="fab fa-facebook-f"></i></a>
+              <a href="http://www.twitter.com" class="social-icon-new"><i class="fab fa-twitter"></i></a>
+              <a href="http://www.instagram.com" class="social-icon-new"><i class="fab fa-instagram"></i></a>
+              <a href="http://www.linkedin.com" class="social-icon-new"><i class="fab fa-linkedin-in"></i></a>
+              <a href="http://www.youtube.com" class="social-icon-new"><i class="fab fa-youtube"></i></a>
+            </div>
+          </div>
+          <div>
+            <h4 class="footer-title">Quick Links</h4>
+            <ul class="footer-links-list">
+              <li><a href="index.html"><i class="fas fa-chevron-right"></i> Home</a></li>
+              <li><a href="aboutus.html"><i class="fas fa-chevron-right"></i> About Us</a></li>
+              <li><a href="services.html"><i class="fas fa-chevron-right"></i> Our Services</a></li>
+              <li><a href="blog.html"><i class="fas fa-chevron-right"></i> Latest Blog</a></li>
+            </ul>
+          </div>
+          <div>
+            <h4 class="footer-title">Contact Info</h4>
+            <div class="contact-info-item"><i class="fas fa-map-marker-alt"></i><span>123 Luxury Avenue, Beverly Hills, CA 90210</span></div>
+            <div class="contact-info-item"><i class="fas fa-phone-alt"></i><span>+1 (800) 456-7890</span></div>
+            <div class="contact-info-item"><i class="fas fa-envelope"></i><span>hello@compasshousing.com</span></div>
+          </div>
+          <div>
+            <h4 class="footer-title">Newsletter</h4>
+            <p style="font-size:14px; color:rgba(255,255,255,0.8); margin-bottom:18px;">Get exclusive property insights and market trends.</p>
+            <form class="newsletter-form" id="newsletterForm">
+              <input type="email" id="newsletterEmail" class="newsletter-input" placeholder="Your email address (must end with @gmail.com)" required>
+              <button type="submit" class="newsletter-btn">Subscribe <i class="fas fa-paper-plane"></i></button>
+            </form>
+          </div>
+        </div>
+        <div class="footer-bottom-new">
+          <div class="copyright">© 2025 Compass Housing Society. All rights reserved.</div>
+          <div class="footer-legal">
+            <a href="#">Privacy Policy</a>
+            <a href="#">Terms of Service</a>
+            <a href="#">Cookie Settings</a>
+          </div>
+        </div>
+      </div>
+    </footer>
+  </div>
+</div>
+
+<button class="back-to-top"><i class="fas fa-arrow-up"></i></button>
+<div id="popupToast" class="toast-notification"><i class="fas fa-bell"></i><span id="toastMessage">Message</span></div>
+
+<script>
+  (function() {
+    const body = document.body;
+    const themeToggles = document.querySelectorAll(".theme-toggle");
+    const storedTheme = localStorage.getItem("compass-theme");
+    if (storedTheme === "dark") body.classList.add("dark-mode");
+    themeToggles.forEach(t => { t.addEventListener("click", () => { body.classList.toggle("dark-mode"); localStorage.setItem("compass-theme", body.classList.contains("dark-mode") ? "dark" : "light"); }); });
+    
+    const menuToggle = document.querySelector(".menu-toggle");
+    const navMenu = document.querySelector(".nav-menu");
+    function closeMenu() { if (navMenu) navMenu.classList.remove("nav-open"); }
+    if (menuToggle && navMenu) {
+      menuToggle.addEventListener("click", () => { navMenu.classList.toggle("nav-open"); menuToggle.innerHTML = navMenu.classList.contains("nav-open") ? "✕" : "☰"; });
+      document.addEventListener('click', (e) => { if (window.innerWidth <= 1030 && !navMenu.contains(e.target) && !menuToggle.contains(e.target) && navMenu.classList.contains('nav-open')) { closeMenu(); menuToggle.innerHTML = "☰"; } });
+      document.addEventListener('keydown', (e) => { if (e.key === 'Escape' && window.innerWidth <= 1030 && navMenu.classList.contains('nav-open')) { closeMenu(); menuToggle.innerHTML = "☰"; } });
+    }
+    
+    const dropdowns = document.querySelectorAll(".nav-item.dropdown > .nav-link-custom");
+    dropdowns.forEach(link => { link.addEventListener("click", (e) => { e.preventDefault(); const parent = link.parentElement; document.querySelectorAll(".nav-item.dropdown.open").forEach(item => { if (item !== parent) item.classList.remove("open"); }); parent.classList.toggle("open"); }); });
+    
+    const backBtn = document.querySelector('.back-to-top');
+    if (backBtn) { window.addEventListener('scroll', () => { backBtn.classList.toggle('show', window.pageYOffset > 300); }); backBtn.addEventListener('click', () => { window.scrollTo({ top: 0, behavior: 'smooth' }); }); }
+    window.addEventListener('resize', () => { if (window.innerWidth > 1030 && navMenu && navMenu.classList.contains('nav-open')) { closeMenu(); if(menuToggle) menuToggle.innerHTML = "☰"; } });
+    
+    const newsletterForm = document.getElementById('newsletterForm');
+    const emailInput = document.getElementById('newsletterEmail');
+    const toast = document.getElementById('popupToast');
+    const toastMessageSpan = document.getElementById('toastMessage');
+    
+    function showPopupMessage(message, isError = false) {
+      toastMessageSpan.innerText = message;
+      toast.classList.add('show');
+      if (isError) {
+        toast.style.background = "#8B0000";
+        toast.style.borderLeftColor = "#FFA500";
+      } else {
+        toast.style.background = "#01321F";
+        toast.style.borderLeftColor = "#0088BE";
+      }
+      if (body.classList.contains('dark-mode') && !isError) toast.style.background = "#1a1a1a";
+      if (body.classList.contains('dark-mode') && isError) toast.style.background = "#5a0000";
+      setTimeout(() => { toast.classList.remove('show'); }, 3500);
+    }
+    
+    if (newsletterForm) {
+      newsletterForm.addEventListener('submit', function(e) {
+        e.preventDefault();
+        const emailValue = emailInput.value.trim();
+        if (emailValue === "") {
+          showPopupMessage("❌ Please enter your email address.", true);
+          return;
+        }
+        const gmailPattern = /^[a-zA-Z0-9._%+-]+@gmail\.com$/;
+        if (!gmailPattern.test(emailValue)) {
+          showPopupMessage("⚠️ Email must end with @gmail.com! Example: username@gmail.com", true);
+          return;
+        }
+        showPopupMessage("✓ Successfully subscribed! Thank you for joining.", false);
+        emailInput.value = "";
+      });
+    }
+  })();
+</script>
+</body>
+</html>

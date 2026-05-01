@@ -1,0 +1,1475 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+  <title>Service Details - Compass Housing Society</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <style>
+    :root {
+      --primary: #01321F;
+      --accent: #0088BE;
+      --light-bg: #D1F2FF;
+      --light: #FFFFFF;
+      --dark: #0A1A2A;
+      --dark-bg: #0B1B2B;
+      --soft-accent: rgba(0,136,190,0.12);
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: 'DM Sans', sans-serif;
+      color: var(--dark);
+      background-color: var(--light);
+      transition: background-color 0.3s, color 0.3s;
+    }
+
+    /* Remove ALL default bold weights */
+    h1, h2, h3, h4, h5, h6, 
+    .h1, .h2, .h3, .h4, .h5, .h6,
+    .brand, .nav-link-custom, .btn-register, .footer-title,
+    .footer-links-list li a, .contact-info-item span, .banner-title,
+    .section-title, .step-number, .price, .pricing-btn {
+      font-weight: 400 !important;
+    }
+    
+    strong, b {
+      font-weight: 400 !important;
+    }
+
+    h1 { font-size: 46px; line-height: 1.2; letter-spacing: -0.02em; }
+    h2 { font-size: 36px; line-height: 1.3; letter-spacing: -0.01em; }
+    h3 { font-size: 24px; line-height: 1.4; }
+    h4 { font-size: 20px; line-height: 1.4; }
+    h5 { font-size: 18px; line-height: 1.4; }
+    h6 { font-size: 16px; line-height: 1.4; }
+    li, span, p { font-size: 18px; line-height: 1.6; font-weight: 400; }
+    a { text-decoration: none; color: inherit; }
+    ul { list-style: none; padding-left: 0; margin-bottom: 0; }
+
+    /* DARK MODE - PURE BLACK BACKGROUND */
+    body.dark-mode {
+      background-color: #000000 !important;
+      color: #FFFFFF !important;
+    }
+
+    body.dark-mode .page-wrapper {
+      background-color: #000000 !important;
+    }
+
+    body.dark-mode .content-layer {
+      background-color: #000000 !important;
+    }
+
+    body.dark-mode header {
+      background: #000000 !important;
+      border-bottom: 1px solid rgba(0,136,190,0.5);
+    }
+
+    body.dark-mode .navbar-custom,
+    body.dark-mode header,
+    body.dark-mode .nav-menu {
+      background: #000000 !important;
+    }
+
+    body.dark-mode .nav-link-custom {
+      color: #FFFFFF !important;
+    }
+
+    body.dark-mode .site-footer {
+      background: #000000 !important;
+      border-top-color: #0088BE40 !important;
+    }
+    
+    body.dark-mode .footer-title,
+    body.dark-mode .footer-about p,
+    body.dark-mode .footer-links-list li a,
+    body.dark-mode .contact-info-item span,
+    body.dark-mode .copyright,
+    body.dark-mode .footer-legal a {
+      color: #FFFFFF !important;
+    }
+
+    body.dark-mode .page-banner {
+      background-color: #000000 !important;
+    }
+
+    body.dark-mode .banner-title {
+      color: #FFFFFF !important;
+    }
+
+    body.dark-mode .banner-breadcrumb,
+    body.dark-mode .banner-breadcrumb a {
+      color: #CCCCCC !important;
+    }
+
+    body.dark-mode .overview-content h2,
+    body.dark-mode .section-title {
+      color: #FFFFFF !important;
+    }
+
+    body.dark-mode .overview-content p,
+    body.dark-mode .overview-features li,
+    body.dark-mode .section-description {
+      color: #CCCCCC !important;
+    }
+
+    body.dark-mode .step-card,
+    body.dark-mode .benefit-card,
+    body.dark-mode .pricing-card,
+    body.dark-mode .testimonial-card {
+      background: #111111 !important;
+      border-color: #2a2a2a !important;
+    }
+
+    body.dark-mode .step-card h3,
+    body.dark-mode .benefit-card h3,
+    body.dark-mode .pricing-header h3,
+    body.dark-mode .client-name h4 {
+      color: #FFFFFF !important;
+    }
+
+    body.dark-mode .step-card p,
+    body.dark-mode .benefit-card p,
+    body.dark-mode .pricing-features li,
+    body.dark-mode .testimonial-text {
+      color: #CCCCCC !important;
+    }
+
+    body.dark-mode .pricing-header {
+      background-color: #1a1a1a !important;
+    }
+
+    body.dark-mode .pricing-header .price {
+      color: var(--accent) !important;
+    }
+
+    /* watermark */
+    body::after {
+      content: "";
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background-image: url("Images/transparent-logo.jpeg");
+      background-repeat: no-repeat;
+      background-position: center;
+      background-size: 570px auto;
+      opacity: 0.08;
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    .page-wrapper {
+      max-width: 1920px;
+      margin: 0 auto;
+      min-height: 100vh;
+      position: relative;
+      overflow-x: hidden;
+      padding-top: 82px;
+      background-color: var(--light);
+      transition: background-color 0.3s;
+    }
+
+    .content-layer { 
+      position: relative; 
+      z-index: 1;
+      min-height: calc(100vh - 200px);
+    }
+
+    /* HEADER - same as index */
+    header {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      z-index: 100;
+      background: #01321F;
+      box-shadow: 0 8px 22px rgba(0,0,0,0.55);
+      transition: background 0.3s;
+    }
+
+    .navbar-custom { 
+      display: flex; 
+      align-items: center; 
+      justify-content: space-between; 
+      gap: 24px; 
+      position: relative;
+      padding: 12px 40px;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-weight: 400 !important;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      white-space: nowrap;
+      color: #FFFFFF;
+    }
+
+    .brand span {
+      font-weight: 400;
+    }
+
+    .brand img { 
+      width: 58px; 
+      height: 58px; 
+      object-fit: cover; 
+      border-radius: 8px;
+      border: 2px solid #FFFFFF; 
+      opacity: 0.97; 
+      background: transparent; 
+    }
+
+    .nav-menu { 
+      display: flex; 
+      align-items: center; 
+      gap: 24px; 
+      flex: 1; 
+      justify-content: center; 
+      flex-wrap: wrap; 
+    }
+
+    .nav-item { position: relative; }
+    .nav-link-custom {
+      color: #FFFFFF;
+      padding: 4px 0;
+      opacity: 0.95;
+      position: relative;
+      cursor: pointer;
+      display: inline-block;
+      transition: color 0.25s ease, opacity 0.25s ease;
+      font-weight: 400 !important;
+    }
+
+    .nav-link-custom::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      bottom: -3px;
+      width: 0%;
+      height: 2px;
+      background-color: #0088BE;
+      transition: width 0.25s ease;
+    }
+
+    .nav-link-custom:hover::after { width: 100%; }
+    .dropdown-toggle-custom::after { content: " ▾"; position: static; width: auto; height: auto; background: none; margin-left: 4px; }
+
+    .dropdown-menu-custom {
+      position: absolute;
+      left: 0;
+      top: calc(100% + 6px);
+      background-color: #01321F;
+      border-radius: 10px;
+      border: 1px solid rgba(255,255,255,0.12);
+      min-width: 190px;
+      display: none;
+      padding: 6px 0;
+      z-index: 120;
+      box-shadow: 0 12px 20px rgba(0,0,0,0.6);
+    }
+
+    .dropdown-menu-custom li a {
+      display: block;
+      padding: 8px 18px;
+      color: #FFFFFF;
+      white-space: nowrap;
+      opacity: 0.9;
+      transition: background-color 0.25s ease, opacity 0.25s ease, color 0.25s ease;
+      font-weight: 400 !important;
+    }
+
+    .dropdown-menu-custom li a:hover { background-color: rgba(0,136,190,0.25); opacity: 1; color: #D1F2FF; }
+    .nav-item.dropdown.open>.dropdown-menu-custom { display: block; }
+
+    .nav-actions { 
+      display: flex; 
+      align-items: center; 
+      gap: 12px; 
+      margin-left: auto; 
+    }
+
+    .btn-animated { 
+      transition: transform 0.25s ease, box-shadow 0.25s ease, filter 0.25s ease; 
+      box-shadow: 0 6px 16px rgba(0,0,0,0.45); 
+    }
+
+    .btn-animated:hover { 
+      transform: translateY(-2px); 
+      box-shadow: 0 10px 26px rgba(0,0,0,0.7); 
+      filter: brightness(0.96); 
+    }
+
+    .btn-register {
+      background: #0088BE;
+      color: #FFFFFF;
+      border: none;
+      padding: 8px 15px;
+      border-radius: 999px;
+      font-weight: 400 !important;
+      cursor: pointer;
+      white-space: nowrap;
+      font-family: 'DM Sans', sans-serif;
+      font-size: 16px;
+    }
+
+    .theme-toggle {
+      position: relative;
+      width: 70px;
+      height: 34px;
+      border-radius: 34px;
+      background: linear-gradient(145deg, #4a4a4a, #2a2a2a);
+      border: 2px solid rgba(255,255,255,0.3);
+      cursor: pointer;
+      transition: all 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+      box-shadow: inset 0 2px 4px rgba(0,0,0,0.3), 0 4px 12px rgba(0,0,0,0.25);
+      overflow: hidden;
+      flex-shrink: 0;
+    }
+
+    .theme-toggle::before {
+      content: '';
+      position: absolute;
+      top: 3px;
+      left: 3px;
+      width: 26px;
+      height: 26px;
+      background: linear-gradient(145deg, #FFD700, #FFA500);
+      border-radius: 50%;
+      transition: all 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+      z-index: 2;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.3), inset 0 -1px 2px rgba(255,255,255,0.2);
+    }
+
+    .theme-toggle::after {
+      content: '☀️';
+      position: absolute;
+      top: 50%;
+      right: 10px;
+      transform: translateY(-50%);
+      font-size: 14px;
+      opacity: 0.9;
+      filter: drop-shadow(0 1px 2px rgba(0,0,0,0.3));
+      transition: all 0.4s ease;
+      z-index: 1;
+    }
+
+    .theme-toggle .moon {
+      position: absolute;
+      top: 50%;
+      left: 10px;
+      transform: translateY(-50%);
+      font-size: 14px;
+      opacity: 0.4;
+      filter: drop-shadow(0 1px 2px rgba(0,0,0,0.3));
+      transition: all 0.4s ease;
+      pointer-events: none;
+    }
+
+    body.dark-mode .theme-toggle {
+      background: linear-gradient(145deg, #1e3a5f, #0a1a2a);
+      border-color: rgba(255,255,255,0.5);
+    }
+
+    body.dark-mode .theme-toggle::before {
+      left: calc(100% - 29px);
+      background: linear-gradient(145deg, #E0E0E0, #C0C0C0);
+    }
+
+    body.dark-mode .theme-toggle::after {
+      content: '🌙';
+      right: auto;
+      left: 10px;
+      opacity: 1;
+    }
+
+    body.dark-mode .theme-toggle .moon {
+      opacity: 0;
+    }
+
+    .menu-toggle {
+      display: none;
+      border: 1px solid #FFFFFF;
+      background: transparent;
+      font-size: 22px;
+      line-height: 1;
+      cursor: pointer;
+      color: #FFFFFF;
+      padding: 4px 10px;
+      border-radius: 4px;
+      z-index: 1001;
+      transition: background 0.2s;
+    }
+    
+    .menu-toggle:hover {
+      background: rgba(255,255,255,0.1);
+    }
+
+    .mobile-actions {
+      display: none;
+      align-items: center;
+      gap: 12px;
+      margin-left: auto;
+    }
+
+    /* Service Details Page Styles */
+    .page-banner {
+      background-color: #01321F;
+      padding: 60px 20px;
+      text-align: center;
+      position: relative;
+    }
+
+    .banner-content {
+      position: relative;
+      z-index: 2;
+      max-width: 800px;
+      margin: 0 auto;
+    }
+
+    .banner-title {
+      font-size: 56px;
+      color: white;
+      margin-bottom: 20px;
+      font-weight: 400 !important;
+    }
+
+    .banner-breadcrumb {
+      color: rgba(255,255,255,0.9);
+      font-size: 18px;
+    }
+
+    .banner-breadcrumb a {
+      color: #D1F2FF;
+      transition: color 0.3s;
+    }
+
+    .banner-breadcrumb a:hover {
+      color: #0088BE;
+    }
+
+    /* Service Overview */
+    .service-overview {
+      padding: 80px 20px;
+    }
+
+    .overview-container {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 50px;
+      align-items: center;
+    }
+
+    .overview-content h2 {
+      color: #01321F;
+      margin-bottom: 20px;
+      font-weight: 400 !important;
+    }
+
+    .overview-content p {
+      color: #2C4C3E;
+      margin-bottom: 25px;
+    }
+
+    .overview-features {
+      margin-top: 30px;
+    }
+
+    .overview-features li {
+      margin-bottom: 15px;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      color: #2C4C3E;
+    }
+
+    .overview-features i {
+      color: #0088BE;
+      font-size: 20px;
+    }
+
+    .overview-image {
+      border-radius: 20px;
+      overflow: hidden;
+      box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+    }
+
+    .overview-image img {
+      width: 100%;
+      height: auto;
+      display: block;
+      transition: transform 0.6s;
+    }
+
+    .overview-image:hover img {
+      transform: scale(1.05);
+    }
+
+    /* Process Steps */
+    .process-steps {
+      padding: 80px 20px;
+    }
+
+    .section-header {
+      text-align: center;
+      max-width: 800px;
+      margin: 0 auto 60px;
+    }
+
+    .section-title {
+      font-size: 48px;
+      color: #01321F;
+      margin-bottom: 20px;
+      font-weight: 400 !important;
+    }
+
+    .section-description {
+      color: #2C4C3E;
+      font-size: 18px;
+    }
+
+    .steps-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 30px;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .step-card {
+      text-align: center;
+      padding: 40px 30px;
+      background: white;
+      border-radius: 20px;
+      transition: all 0.4s;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+      border: 1px solid #E8F0F5;
+    }
+
+    .step-card:hover {
+      transform: translateY(-10px);
+      border-color: #0088BE;
+      box-shadow: 0 20px 40px rgba(0,136,190,0.15);
+    }
+
+    .step-number {
+      width: 70px;
+      height: 70px;
+      background-color: #0088BE;
+      color: white;
+      font-size: 28px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto 25px;
+    }
+
+    .step-card h3 {
+      color: #01321F;
+      margin-bottom: 15px;
+      font-weight: 400 !important;
+    }
+
+    .step-card p {
+      color: #2C4C3E;
+    }
+
+    /* Key Benefits */
+    .key-benefits {
+      padding: 80px 20px;
+    }
+
+    .benefits-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 40px;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .benefit-card {
+      text-align: center;
+      padding: 40px 30px;
+      border-radius: 20px;
+      transition: all 0.4s;
+      background-color: #F7FDFF;
+      border: 1px solid #E8F0F5;
+    }
+
+    .benefit-card:hover {
+      transform: translateY(-5px);
+      border-color: #0088BE;
+      box-shadow: 0 15px 35px rgba(0,136,190,0.1);
+    }
+
+    .benefit-icon {
+      width: 80px;
+      height: 80px;
+      background-color: #0088BE;
+      border-radius: 20px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto 25px;
+      color: white;
+      font-size: 36px;
+    }
+
+    .benefit-card h3 {
+      color: #01321F;
+      margin-bottom: 15px;
+      font-weight: 400 !important;
+    }
+
+    .benefit-card p {
+      color: #2C4C3E;
+    }
+
+    /* Pricing Plans */
+    .pricing-plans {
+      padding: 80px 20px;
+    }
+
+    .pricing-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+      gap: 30px;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .pricing-card {
+      background: white;
+      border-radius: 20px;
+      overflow: hidden;
+      transition: all 0.4s;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+      position: relative;
+      border: 1px solid #E8F0F5;
+    }
+
+    .pricing-card:hover {
+      transform: translateY(-10px);
+      border-color: #0088BE;
+      box-shadow: 0 20px 40px rgba(0,136,190,0.15);
+    }
+
+    .pricing-header {
+      background-color: #01321F;
+      color: white;
+      padding: 30px;
+      text-align: center;
+    }
+
+    .pricing-header h3 {
+      color: white;
+      margin-bottom: 10px;
+      font-weight: 400 !important;
+    }
+
+    .price {
+      font-size: 48px;
+      margin: 20px 0;
+    }
+
+    .price span {
+      font-size: 18px;
+    }
+
+    .pricing-body {
+      padding: 30px;
+    }
+
+    .pricing-features {
+      list-style: none;
+      margin-bottom: 30px;
+    }
+
+    .pricing-features li {
+      padding: 10px 0;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      color: #2C4C3E;
+    }
+
+    .pricing-features i {
+      width: 22px;
+    }
+
+    .pricing-features i.fa-check, .pricing-features i.fa-check-circle {
+      color: #00a86b;
+    }
+
+    .pricing-features i.fa-times, .pricing-features i.fa-times-circle {
+      color: #ff4444;
+    }
+
+    /* ENHANCED BUTTON STYLES WITH BORDER-RADIUS */
+    .pricing-btn {
+      width: 100%;
+      padding: 14px 20px;
+      background-color: #0088BE;
+      color: white;
+      border: none;
+      border-radius: 28px !important;  /* Rounded corners for Get Started & Contact Us buttons */
+      transition: all 0.3s ease;
+      font-family: 'DM Sans', sans-serif;
+      font-size: 16px;
+      font-weight: 500;
+      cursor: pointer;
+      letter-spacing: 0.5px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    }
+
+    .pricing-btn:hover {
+      background-color: #016c99;
+      transform: translateY(-3px);
+      box-shadow: 0 6px 16px rgba(0,136,190,0.3);
+    }
+
+    .pricing-btn:active {
+      transform: translateY(0);
+    }
+
+    /* Testimonials */
+    .testimonials {
+      padding: 80px 20px;
+    }
+
+    .testimonials-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+      gap: 30px;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .testimonial-card {
+      background-color: #F7FDFF;
+      padding: 40px;
+      border-radius: 20px;
+      position: relative;
+      transition: all 0.4s;
+      border: 1px solid #E8F0F5;
+    }
+
+    .testimonial-card:hover {
+      transform: translateY(-5px);
+      border-color: #0088BE;
+      box-shadow: 0 15px 35px rgba(0,136,190,0.1);
+    }
+
+    .quote-icon {
+      font-size: 48px;
+      color: #0088BE;
+      opacity: 0.3;
+      position: absolute;
+      top: 20px;
+      right: 30px;
+    }
+
+    .testimonial-text {
+      font-size: 18px;
+      line-height: 1.7;
+      color: #2C4C3E;
+      margin-bottom: 25px;
+      position: relative;
+      z-index: 1;
+    }
+
+    .client-info {
+      display: flex;
+      align-items: center;
+      gap: 15px;
+    }
+
+    .client-image {
+      width: 60px;
+      height: 60px;
+      border-radius: 50%;
+      overflow: hidden;
+    }
+
+    .client-image img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .client-name h4 {
+      color: #01321F;
+      margin-bottom: 5px;
+      font-weight: 400 !important;
+    }
+
+    .client-name p {
+      color: #0088BE;
+      font-size: 14px;
+    }
+
+    /* FOOTER - same as index */
+    .site-footer {
+      background: #01321F;
+      color: #FFFFFF;
+      width: 100%;
+      transition: background 0.3s;
+      position: relative;
+      margin-top: 0;
+      padding: 70px 0 30px;
+      border-top: 1px solid rgba(0,136,190,0.3);
+    }
+
+    .footer-container {
+      max-width: 1400px;
+      margin: 0 auto;
+      padding: 0 40px;
+    }
+
+    .footer-grid {
+      display: grid;
+      grid-template-columns: 2fr 1fr 1.5fr 1.5fr;
+      gap: 50px;
+      margin-bottom: 50px;
+    }
+
+    .footer-about p {
+      color: rgba(255,255,255,0.85);
+      font-size: 15px;
+      line-height: 1.7;
+      margin-top: 20px;
+      max-width: 320px;
+    }
+
+    .footer-logo {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 20px;
+    }
+
+    .footer-logo img {
+      width: 52px;
+      height: 52px;
+      border-radius: 12px;
+      border: 2px solid #0088BE;
+      object-fit: cover;
+    }
+
+    .footer-logo h3 {
+      font-size: 22px;
+      font-weight: 400 !important;
+      letter-spacing: 1px;
+      margin: 0;
+      color: white;
+    }
+
+    .footer-title {
+      font-size: 20px;
+      font-weight: 400 !important;
+      margin-bottom: 28px;
+      position: relative;
+      display: inline-block;
+      color: white;
+    }
+
+    .footer-title::after {
+      content: '';
+      position: absolute;
+      left: 0;
+      bottom: -8px;
+      width: 45px;
+      height: 3px;
+      background: #0088BE;
+      border-radius: 4px;
+    }
+
+    .footer-links-list {
+      list-style: none;
+      padding: 0;
+    }
+
+    .footer-links-list li {
+      margin-bottom: 14px;
+    }
+
+    .footer-links-list li a {
+      color: rgba(255,255,255,0.8);
+      text-decoration: none;
+      transition: all 0.3s;
+      font-size: 15px;
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      font-weight: 400 !important;
+    }
+
+    .footer-links-list li a i {
+      font-size: 12px;
+      color: #0088BE;
+      transition: transform 0.2s;
+    }
+
+    .footer-links-list li a:hover {
+      color: #FFFFFF;
+      transform: translateX(5px);
+    }
+
+    .contact-info-item {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 22px;
+    }
+
+    .contact-info-item i {
+      width: 36px;
+      height: 36px;
+      background: rgba(0,136,190,0.2);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 16px;
+      color: #0088BE;
+    }
+
+    .contact-info-item span {
+      font-weight: 400 !important;
+    }
+
+    .newsletter-form-footer {
+      margin-top: 20px;
+      display: flex;
+      flex-direction: column;
+      gap: 15px;
+    }
+
+    .newsletter-input {
+      background: rgba(255,255,255,0.12);
+      border: 1px solid rgba(255,255,255,0.25);
+      padding: 12px 18px;
+      border-radius: 50px;
+      color: white;
+      font-size: 14px;
+      outline: none;
+      font-weight: 400;
+    }
+
+    .newsletter-input:focus {
+      border-color: #0088BE;
+      background: rgba(255,255,255,0.2);
+    }
+
+    .newsletter-btn {
+      background: #0088BE;
+      border: none;
+      padding: 12px 20px;
+      border-radius: 50px;
+      color: white;
+      font-weight: 400 !important;
+      cursor: pointer;
+      transition: all 0.3s;
+    }
+
+    .newsletter-btn:hover {
+      background: #016c99;
+      transform: translateY(-2px);
+    }
+
+    .social-links-new {
+      display: flex;
+      gap: 14px;
+      margin-top: 25px;
+    }
+
+    .social-icon-new {
+      width: 38px;
+      height: 38px;
+      background: rgba(255,255,255,0.1);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: white;
+      font-size: 18px;
+      transition: all 0.3s ease;
+    }
+
+    .social-icon-new:hover {
+      background: #0088BE;
+      transform: translateY(-3px);
+    }
+
+    .footer-bottom-new {
+      text-align: center;
+      padding-top: 30px;
+      border-top: 1px solid rgba(255,255,255,0.15);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+    }
+
+    .copyright {
+      font-size: 14px;
+      color: rgba(255,255,255,0.7);
+      font-weight: 400;
+    }
+
+    .footer-legal {
+      display: flex;
+      gap: 25px;
+    }
+
+    .footer-legal a {
+      font-size: 13px;
+      color: rgba(255,255,255,0.7);
+      font-weight: 400;
+    }
+
+    .back-to-top {
+      position: fixed;
+      bottom: 30px;
+      right: 30px;
+      width: 50px;
+      height: 50px;
+      background-color: #01321F;
+      color: white;
+      border: none;
+      border-radius: 50%;
+      font-size: 24px;
+      cursor: pointer;
+      z-index: 99;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      opacity: 0;
+      visibility: hidden;
+      transition: all 0.3s ease;
+    }
+    .back-to-top.show { opacity: 1; visibility: visible; }
+    .back-to-top:hover { background-color: #0088BE; }
+
+    /* Toast Notification */
+    .toast-notification {
+      position: fixed;
+      top: 100px;
+      left: 50%;
+      transform: translateX(-50%) translateY(-30px);
+      background: #01321F;
+      color: white;
+      padding: 14px 28px;
+      border-radius: 50px;
+      font-weight: 400;
+      font-size: 16px;
+      z-index: 2000;
+      opacity: 0;
+      visibility: hidden;
+      transition: all 0.3s ease;
+      box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      backdrop-filter: blur(8px);
+      white-space: nowrap;
+      border-left: 4px solid #0088BE;
+    }
+
+    body.dark-mode .toast-notification {
+      background: #1a1a1a;
+      color: #fff;
+      border-left-color: #0088BE;
+    }
+
+    .toast-notification.show {
+      opacity: 1;
+      visibility: visible;
+      transform: translateX(-50%) translateY(0);
+    }
+
+    .toast-notification i {
+      font-size: 22px;
+    }
+
+    /* Responsive */
+    @media (max-width: 1030px) { 
+      .navbar-custom { padding: 10px 16px; flex-wrap: wrap; }
+      .brand { order: 1; flex: 1; }
+      .nav-actions.desktop-actions { display: none; }
+      .mobile-actions { display: flex; order: 2; }
+      .menu-toggle { display: inline-flex; order: 3; }
+      .nav-menu { position: fixed; top: 0; right: -280px; width: 280px; flex-direction: column; background: #01321F; padding: 20px; z-index: 110; transition: right 0.3s; }
+      .nav-menu.nav-open { right: 0; }
+      .dropdown-menu-custom { position: static; }
+      .overview-container { grid-template-columns: 1fr; }
+      .footer-grid { grid-template-columns: 1fr 1fr; gap: 40px; }
+      .footer-container { padding: 0 20px; }
+      .banner-title { font-size: 42px; }
+      .section-title { font-size: 36px; }
+    }
+    
+    @media (max-width: 768px) { 
+      .banner-title { font-size: 32px; }
+      .section-title { font-size: 28px; }
+      .steps-grid, .benefits-grid, .pricing-grid, .testimonials-grid { grid-template-columns: 1fr; }
+      .footer-grid { grid-template-columns: 1fr; }
+      .footer-bottom-new { flex-direction: column; gap: 15px; text-align: center; }
+      .footer-legal { justify-content: center; }
+      .toast-notification { white-space: normal; width: 90%; text-align: center; }
+      .pricing-btn { border-radius: 28px !important; }
+    }
+  </style>
+</head>
+<body>
+<div class="page-wrapper">
+  <div class="content-layer">
+    <header>
+      <nav class="navbar-custom">
+        <div class="brand"><img src="Images/logo.jpeg" alt="Compass Housing Society Logo"><span>Compass Housing<br> Society</span></div>
+        <div class="mobile-actions"><div class="theme-toggle"><span class="moon">🌙</span></div><a href="login.html"><button class="btn-register btn-animated">Sign In</button></a></div>
+        <ul class="nav-menu">
+          <li class="nav-item"><a href="index.html" class="nav-link-custom">Home 1</a></li>
+          <li class="nav-item"><a href="home2.html" class="nav-link-custom">Home 2</a></li>
+          <li class="nav-item dropdown"><span class="nav-link-custom dropdown-toggle-custom">Services</span><ul class="dropdown-menu-custom"><li><a href="services.html">Service</a></li><li><a href="servicedetails.html">Service Details</a></li></ul></li>
+          <li class="nav-item"><a href="aboutus.html" class="nav-link-custom">About Us</a></li>
+          <li class="nav-item dropdown"><span class="nav-link-custom dropdown-toggle-custom">Contact Us</span><ul class="dropdown-menu-custom"><li><a href="contactus.html">Contact Us</a></li><li><a href="additionalpage.html">404</a></li><li><a href="pricing.html">Pricing</a></li><li><a href="commingsoon.html">Coming soon</a></li></ul></li>
+          <li class="nav-item dropdown"><span class="nav-link-custom dropdown-toggle-custom">Blog</span><ul class="dropdown-menu-custom"><li><a href="blog.html">Blog</a></li><li><a href="blogdetails.html">Blog Details</a></li></ul></li>
+        </ul>
+        <div class="nav-actions desktop-actions"><div class="theme-toggle"><span class="moon">🌙</span></div><a href="login.html"><button class="btn-register btn-animated">Sign In</button></a></div>
+        <button class="menu-toggle">☰</button>
+      </nav>
+    </header>
+
+    <main>
+      <section class="page-banner">
+        <div class="banner-content">
+          <h1 class="banner-title">Property Sales & Acquisition</h1>
+          <div class="banner-breadcrumb">
+            <a href="index.html">Home</a> / <a href="services.html">Services</a> / <span>Service Details</span>
+          </div>
+        </div>
+      </section>
+
+      <section class="service-overview">
+        <div class="overview-container">
+          <div class="overview-content">
+            <h2>Comprehensive Property Sales & Acquisition Services</h2>
+            <p>At Compass Housing Society, we provide end-to-end real estate solutions designed to help you buy or sell properties with confidence. Our team of expert agents combines deep market knowledge, innovative marketing strategies, and unparalleled negotiation skills to ensure you achieve the best possible outcomes.</p>
+            <p>Whether you're a first-time homebuyer, an experienced investor, or looking to sell your property, our personalized approach ensures your unique needs are met at every step of the journey.</p>
+            <ul class="overview-features">
+              <li><i class="fas fa-check-circle"></i> Expert market analysis and property valuation</li>
+              <li><i class="fas fa-check-circle"></i> Strategic marketing and global exposure</li>
+              <li><i class="fas fa-check-circle"></i> Professional negotiation and contract management</li>
+              <li><i class="fas fa-check-circle"></i> Full legal and financial advisory support</li>
+            </ul>
+          </div>
+          <div class="overview-image">
+            <img src="https://images.unsplash.com/photo-1560518883-ce09059eeffa?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Property Consultation">
+          </div>
+        </div>
+      </section>
+
+      <section class="process-steps">
+        <div class="section-header">
+          <h2 class="section-title">Our Proven Process</h2>
+          <p class="section-description">We follow a structured approach to ensure a seamless and successful real estate transaction</p>
+        </div>
+        <div class="steps-grid">
+          <div class="step-card">
+            <div class="step-number">01</div>
+            <h3>Initial Consultation</h3>
+            <p>We begin by understanding your goals, preferences, and requirements to create a tailored strategy.</p>
+          </div>
+          <div class="step-card">
+            <div class="step-number">02</div>
+            <h3>Market Analysis</h3>
+            <p>Our team conducts comprehensive market research to identify opportunities and set competitive pricing.</p>
+          </div>
+          <div class="step-card">
+            <div class="step-number">03</div>
+            <h3>Strategic Marketing</h3>
+            <p>We implement targeted marketing campaigns to maximize exposure and attract qualified buyers.</p>
+          </div>
+          <div class="step-card">
+            <div class="step-number">04</div>
+            <h3>Negotiation & Closing</h3>
+            <p>Our experts handle all negotiations and paperwork to ensure a smooth closing process.</p>
+          </div>
+        </div>
+      </section>
+
+      <section class="key-benefits">
+        <div class="section-header">
+          <h2 class="section-title">Key Benefits</h2>
+          <p class="section-description">Experience the Compass advantage with our premium service offerings</p>
+        </div>
+        <div class="benefits-grid">
+          <div class="benefit-card">
+            <div class="benefit-icon"><i class="fas fa-chart-line"></i></div>
+            <h3>Maximize Property Value</h3>
+            <p>Our strategic marketing and negotiation expertise ensures you get the best possible price for your property.</p>
+          </div>
+          <div class="benefit-card">
+            <div class="benefit-icon"><i class="fas fa-clock"></i></div>
+            <h3>Faster Transactions</h3>
+            <p>Streamlined processes and extensive network help close deals efficiently without compromising quality.</p>
+          </div>
+          <div class="benefit-card">
+            <div class="benefit-icon"><i class="fas fa-shield-alt"></i></div>
+            <h3>Risk Mitigation</h3>
+            <p>Comprehensive due diligence and legal support protect your interests throughout the transaction.</p>
+          </div>
+        </div>
+      </section>
+
+      <section class="pricing-plans">
+        <div class="section-header">
+          <h2 class="section-title">Flexible Pricing Plans</h2>
+          <p class="section-description">Choose the package that best suits your needs and budget</p>
+        </div>
+        <div class="pricing-grid">
+          <div class="pricing-card">
+            <div class="pricing-header">
+              <h3>Basic Package</h3>
+              <div class="price">3% <span>Commission</span></div>
+              <p>Essential services for straightforward transactions</p>
+            </div>
+            <div class="pricing-body">
+              <ul class="pricing-features">
+                <li><i class="fas fa-check-circle"></i> Property Valuation</li>
+                <li><i class="fas fa-check-circle"></i> Basic Marketing</li>
+                <li><i class="fas fa-check-circle"></i> Standard Listing Services</li>
+                <li><i class="fas fa-times-circle"></i> Professional Photography</li>
+                <li><i class="fas fa-times-circle"></i> Virtual Tours</li>
+              </ul>
+              <button class="pricing-btn" onclick="alert('✅ Basic Package selected! Please proceed.')">Get Started</button>
+            </div>
+          </div>
+          <div class="pricing-card">
+            <div class="pricing-header">
+              <h3>Premium Package</h3>
+              <div class="price">5% <span>Commission</span></div>
+              <p>Comprehensive services with maximum exposure</p>
+            </div>
+            <div class="pricing-body">
+              <ul class="pricing-features">
+                <li><i class="fas fa-check-circle"></i> Property Valuation</li>
+                <li><i class="fas fa-check-circle"></i> Premium Marketing Campaign</li>
+                <li><i class="fas fa-check-circle"></i> Professional Photography</li>
+                <li><i class="fas fa-check-circle"></i> Virtual Tours & 3D Walkthroughs</li>
+                <li><i class="fas fa-check-circle"></i> Global Listing Exposure</li>
+              </ul>
+              <button class="pricing-btn" onclick="alert('✅ Premium Package selected! Please proceed.')">Get Started</button>
+            </div>
+          </div>
+          <div class="pricing-card">
+            <div class="pricing-header">
+              <h3>Enterprise Package</h3>
+              <div class="price">Custom <span>Pricing</span></div>
+              <p>Tailored solutions for portfolio investors</p>
+            </div>
+            <div class="pricing-body">
+              <ul class="pricing-features">
+                <li><i class="fas fa-check-circle"></i> Everything in Premium</li>
+                <li><i class="fas fa-check-circle"></i> Dedicated Account Manager</li>
+                <li><i class="fas fa-check-circle"></i> Investment Portfolio Analysis</li>
+                <li><i class="fas fa-check-circle"></i> Market Research Reports</li>
+                <li><i class="fas fa-check-circle"></i> Priority Support</li>
+              </ul>
+              <button class="pricing-btn" onclick="alert('📞 Contact us for Enterprise Package')">Contact Us</button>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="testimonials">
+        <div class="section-header">
+          <h2 class="section-title">What Our Clients Say</h2>
+          <p class="section-description">Real experiences from homeowners and investors who trusted us</p>
+        </div>
+        <div class="testimonials-grid">
+          <div class="testimonial-card">
+            <i class="fas fa-quote-right quote-icon"></i>
+            <p class="testimonial-text">"The team at Compass Housing Society went above and beyond to help us find our dream home. Their market expertise and dedication made the entire process smooth and stress-free. We couldn't be happier!"</p>
+            <div class="client-info">
+              <div class="client-image">
+                <img src="https://randomuser.me/api/portraits/women/44.jpg" alt="Sarah Johnson">
+              </div>
+              <div class="client-name">
+                <h4>Sarah Johnson</h4>
+                <p>Homeowner</p>
+              </div>
+            </div>
+          </div>
+          <div class="testimonial-card">
+            <i class="fas fa-quote-right quote-icon"></i>
+            <p class="testimonial-text">"As an investor, I've worked with many agencies, but Compass stands out. Their strategic approach to property acquisition helped me secure excellent investment opportunities with high ROI."</p>
+            <div class="client-info">
+              <div class="client-image">
+                <img src="https://randomuser.me/api/portraits/men/32.jpg" alt="Michael Chen">
+              </div>
+              <div class="client-name">
+                <h4>Michael Chen</h4>
+                <p>Real Estate Investor</p>
+              </div>
+            </div>
+          </div>
+          <div class="testimonial-card">
+            <i class="fas fa-quote-right quote-icon"></i>
+            <p class="testimonial-text">"Selling our property through Compass was the best decision. Their marketing campaign attracted multiple offers, and we sold above asking price within just two weeks. Exceptional service!"</p>
+            <div class="client-info">
+              <div class="client-image">
+                <img src="https://randomuser.me/api/portraits/women/68.jpg" alt="Emily Rodriguez">
+              </div>
+              <div class="client-name">
+                <h4>Emily Rodriguez</h4>
+                <p>Home Seller</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <!-- FOOTER - SAME AS INDEX PAGE -->
+    <footer class="site-footer">
+      <div class="footer-container">
+        <div class="footer-grid">
+          <div class="footer-about">
+            <div class="footer-logo">
+              <img src="Images/logo.jpeg" alt="Compass Logo">
+              <h3>Compass Housing</h3>
+            </div>
+            <p>Curating exceptional spaces and redefining luxury real estate experiences worldwide. Your journey to premium living begins here.</p>
+            <div class="social-links-new">
+              <a href="http://www.facebook.com" class="social-icon-new"><i class="fab fa-facebook-f"></i></a>
+              <a href="http://www.twitter.com" class="social-icon-new"><i class="fab fa-twitter"></i></a>
+              <a href="http://www.instagram.com" class="social-icon-new"><i class="fab fa-instagram"></i></a>
+              <a href="http://www.linkedin.com" class="social-icon-new"><i class="fab fa-linkedin-in"></i></a>
+              <a href="http://www.youtube.com" class="social-icon-new"><i class="fab fa-youtube"></i></a>
+            </div>
+          </div>
+          <div>
+            <h4 class="footer-title">Quick Links</h4>
+            <ul class="footer-links-list">
+              <li><a href="index.html"><i class="fas fa-chevron-right"></i> Home</a></li>
+              <li><a href="aboutus.html"><i class="fas fa-chevron-right"></i> About Us</a></li>
+              <li><a href="services.html"><i class="fas fa-chevron-right"></i> Our Services</a></li>
+              <li><a href="blog.html"><i class="fas fa-chevron-right"></i> Latest Blog</a></li>
+            </ul>
+          </div>
+          <div>
+            <h4 class="footer-title">Contact Info</h4>
+            <div class="contact-info-item"><i class="fas fa-map-marker-alt"></i><span>123 Luxury Avenue, Beverly Hills, CA 90210</span></div>
+            <div class="contact-info-item"><i class="fas fa-phone-alt"></i><span>+1 (800) 456-7890</span></div>
+            <div class="contact-info-item"><i class="fas fa-envelope"></i><span>hello@compasshousing.com</span></div>
+          </div>
+          <div>
+            <h4 class="footer-title">Newsletter</h4>
+            <p style="font-size:14px; color:rgba(255,255,255,0.8); margin-bottom:18px;">Get exclusive property insights and market trends.</p>
+            <form class="newsletter-form-footer" id="newsletterForm">
+              <input type="email" id="newsletterEmail" class="newsletter-input" placeholder="Your email address (must end with @gmail.com)" required>
+              <button type="submit" class="newsletter-btn">Subscribe <i class="fas fa-paper-plane"></i></button>
+            </form>
+          </div>
+        </div>
+        <div class="footer-bottom-new">
+          <div class="copyright">© 2025 Compass Housing Society. All rights reserved.</div>
+          <div class="footer-legal">
+            <a href="#">Privacy Policy</a>
+            <a href="#">Terms of Service</a>
+            <a href="#">Cookie Settings</a>
+          </div>
+        </div>
+      </div>
+    </footer>
+  </div>
+</div>
+
+<button class="back-to-top"><i class="fas fa-arrow-up"></i></button>
+<div id="popupToast" class="toast-notification"><i class="fas fa-bell"></i><span id="toastMessage">Message</span></div>
+
+<script>
+  (function() {
+    const body = document.body;
+    const themeToggles = document.querySelectorAll(".theme-toggle");
+    const storedTheme = localStorage.getItem("compass-theme");
+    if (storedTheme === "dark") body.classList.add("dark-mode");
+    themeToggles.forEach(t => { t.addEventListener("click", () => { body.classList.toggle("dark-mode"); localStorage.setItem("compass-theme", body.classList.contains("dark-mode") ? "dark" : "light"); }); });
+    
+    const menuToggle = document.querySelector(".menu-toggle");
+    const navMenu = document.querySelector(".nav-menu");
+    function closeMenu() { if (navMenu) navMenu.classList.remove("nav-open"); }
+    if (menuToggle && navMenu) {
+      menuToggle.addEventListener("click", () => { navMenu.classList.toggle("nav-open"); menuToggle.innerHTML = navMenu.classList.contains("nav-open") ? "✕" : "☰"; });
+      document.addEventListener('click', (e) => { if (window.innerWidth <= 1030 && !navMenu.contains(e.target) && !menuToggle.contains(e.target) && navMenu.classList.contains('nav-open')) { closeMenu(); menuToggle.innerHTML = "☰"; } });
+      document.addEventListener('keydown', (e) => { if (e.key === 'Escape' && window.innerWidth <= 1030 && navMenu.classList.contains('nav-open')) { closeMenu(); menuToggle.innerHTML = "☰"; } });
+    }
+    
+    const dropdowns = document.querySelectorAll(".nav-item.dropdown > .nav-link-custom");
+    dropdowns.forEach(link => { link.addEventListener("click", (e) => { e.preventDefault(); const parent = link.parentElement; document.querySelectorAll(".nav-item.dropdown.open").forEach(item => { if (item !== parent) item.classList.remove("open"); }); parent.classList.toggle("open"); }); });
+    
+    const backBtn = document.querySelector('.back-to-top');
+    if (backBtn) { window.addEventListener('scroll', () => { backBtn.classList.toggle('show', window.pageYOffset > 300); }); backBtn.addEventListener('click', () => { window.scrollTo({ top: 0, behavior: 'smooth' }); }); }
+    window.addEventListener('resize', () => { if (window.innerWidth > 1030 && navMenu && navMenu.classList.contains('nav-open')) { closeMenu(); if(menuToggle) menuToggle.innerHTML = "☰"; } });
+    
+    const newsletterForm = document.getElementById('newsletterForm');
+    const emailInput = document.getElementById('newsletterEmail');
+    const toast = document.getElementById('popupToast');
+    const toastMessageSpan = document.getElementById('toastMessage');
+    
+    function showPopupMessage(message, isError = false) {
+      toastMessageSpan.innerText = message;
+      toast.classList.add('show');
+      if (isError) {
+        toast.style.background = "#8B0000";
+        toast.style.borderLeftColor = "#FFA500";
+      } else {
+        toast.style.background = "#01321F";
+        toast.style.borderLeftColor = "#0088BE";
+      }
+      if (body.classList.contains('dark-mode') && !isError) toast.style.background = "#1a1a1a";
+      if (body.classList.contains('dark-mode') && isError) toast.style.background = "#5a0000";
+      setTimeout(() => { toast.classList.remove('show'); }, 3500);
+    }
+    
+    if (newsletterForm) {
+      newsletterForm.addEventListener('submit', function(e) {
+        e.preventDefault();
+        const emailValue = emailInput.value.trim();
+        if (emailValue === "") {
+          showPopupMessage("❌ Please enter your email address.", true);
+          return;
+        }
+        const gmailPattern = /^[a-zA-Z0-9._%+-]+@gmail\.com$/;
+        if (!gmailPattern.test(emailValue)) {
+          showPopupMessage("⚠️ Email must end with @gmail.com! Example: username@gmail.com", true);
+          return;
+        }
+        showPopupMessage("✓ Successfully subscribed! Thank you for joining.", false);
+        emailInput.value = "";
+      });
+    }
+  })();
+</script>
+</body>
+</html>
